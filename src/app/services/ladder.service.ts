@@ -1,34 +1,33 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { TopFiveDataModel } from '../models/top-five-data-model';
+import { topFiveData} from '../models/top-five-data-model';                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class LadderService {
-  model = new TopFiveDataModel();
+export class LadderService {  
+  tableData: topFiveData[] = [];
   title = 'app';
   restItems: any;
   restItemsUrl = 'https://immense-headland-50105.herokuapp.com/top-ten/delve';
 
-  constructor(private http: HttpClient) { }
-
-  ngOnInit() {
-    this.getRestItems();
+  constructor(private http: HttpClient) {     
   }
 
+  ngOnInit() {
+    this.getRestItems();        
+  }
+
+  // try using an observable or leave it the way it is and use ngFor on the table page
   // Read all REST Items
   getRestItems(): void {
     this.restItemsServiceGetRestItems()
       .subscribe(
         restItems => {
           this.restItems = restItems;
-          console.log(this.restItems);
-          console.log(this.restItems.leagueHC);
-          console.log(this.getHcLeagueDelveData());
-          console.log(this.getScLeagueDelveData());          
+          console.log('completed rest call successfully.');
         }
       )
   }
@@ -40,11 +39,16 @@ export class LadderService {
       .pipe(map(data => data));
   }
 
-  testHcLeagueDelveData() {
-    // return this.restItems.leagueHC.tableDataDelve;
-    var results = new Map(this.restItems.leagueHC.tableDataDelve.map(i => [i.key, i.val]));
+  testHcLeagueDelveData() {    
+    console.log("getHcLeagueDelveData : " +this.restItems)
+    
+    // var results = data.map(e => {new topFiveData(
+    //   e.character, e.name, e.depth, e.id, e.leagueDifficulty, e.leagueName, e.rank, e.theClass, e.timeStamp)
+    // })
 
-    return results;
+    // results.array.forEach(element => {
+    //   console.log(element);
+    // });
   }
 
   getHcLeagueDelveData() {
@@ -63,21 +67,21 @@ export class LadderService {
     return this.restItems.leagueSSF.tableDataDelve;
   }
 
-  getHcLeagueRaceTo100Data() {
-    return this.restItems.leagueHC.tableDataRaceTo100;
-  }
+  // getHcLeagueRaceTo100Data() {
+  //   return this.restItems.leagueHC.tableDataRaceTo100;
+  // }
 
-  getScLeagueRaceTo100Data() {
-    return this.restItems.leagueStd.tableDataRaceTo100;
-  }
+  // getScLeagueRaceTo100Data() {
+  //   return this.restItems.leagueStd.tableDataRaceTo100;
+  // }
 
-  getHcSsfLeagueRaceTo100Data() {
-    return this.restItems.leagueHCSSF.tableDataRaceTo100;
-  }
+  // getHcSsfLeagueRaceTo100Data() {
+  //   return this.restItems.leagueHCSSF.tableDataRaceTo100;
+  // }
 
-  getScSsfLeagueRaceTo100Data() {
-    return this.restItems.leagueSSF.tableDataRaceTo100;
-  }
+  // getScSsfLeagueRaceTo100Data() {
+  //   return this.restItems.leagueSSF.tableDataRaceTo100;
+  // }
 
   getHcLeagueUberLabTopTenData() {
     return this.restItems.leagueHC.tableDataUberLabTopTen;

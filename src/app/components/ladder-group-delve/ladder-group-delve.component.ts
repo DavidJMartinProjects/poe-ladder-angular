@@ -1,15 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { LadderService } from 'src/app/services/ladder.service';
+import { topFiveData } from 'src/app/models/top-five-data-model';
+
+
 
 declare var $;
 
 @Component({
   selector: 'app-ladder-group-delve',
   templateUrl: './ladder-group-delve.component.html',
-  styleUrls: ['./ladder-group-delve.component.css']
+  styleUrls: ['./ladder-group-delve.component.css'],  
 })
 export class LadderGroupDelveComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ladderService: LadderService) {    
+    var data = [];
+    data = ladderService.getHcLeagueDelveData();
+    console.log(data);
+  }
 
   ngOnInit() {
     $('.table').DataTable(
@@ -22,6 +30,9 @@ export class LadderGroupDelveComponent implements OnInit {
         "searching": false
       }
     );
+
+    
+    
   }
 
 
