@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LadderGroupDelveComponent } from './components/ladder-group-delve/ladder-group-delve.component';
@@ -12,7 +13,7 @@ import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,    
     NavbarComponent,    
     TopFiveLeaguePanelComponent,    
     routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent
@@ -20,8 +21,9 @@ import { DataTablesModule } from 'angular-datatables';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    DataTablesModule
-  ],
+    DataTablesModule,
+    HttpClientModule    
+  ],  
   providers: [],
   bootstrap: [AppComponent]
 })
