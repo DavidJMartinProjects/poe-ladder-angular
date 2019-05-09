@@ -14,7 +14,7 @@ declare var $;
 export class LadderGroupDelveComponent implements OnInit {
 
   constructor(private ladderService: LadderService) {    
-    var data = [];
+    var data = []; // create arrays for each table and then use ngFor on the html to loop thru them and print the data
     data = ladderService.getHcLeagueDelveData();
     console.log(data);
   }
