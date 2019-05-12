@@ -1,6 +1,7 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { DelveLeaderboardModel } from "./../../models/DelveLeaderboardModel";
 import { Component, OnInit, ViewChild } from "@angular/core";
+import { Subject } from 'rxjs';
 
 declare var $;
 
@@ -16,6 +17,9 @@ export class LadderGroupDelveComponent implements OnInit {
   hardcore = new Array<DelveLeaderboardModel>();
   softcoreSsf = new Array<DelveLeaderboardModel>();
   hardcoreSsf = new Array<DelveLeaderboardModel>();
+
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
 
   constructor(leaderboardService: LeaderboardService) {
     leaderboardService.getDelveLeaderboards().subscribe(response => {
@@ -53,11 +57,12 @@ export class LadderGroupDelveComponent implements OnInit {
 
   ngOnInit() {}
 
+
   ngAfterViewInit() {
-    $(".datatable").DataTable({
+    $('datatable').DataTable({
       bPaginate: false,
       bLengthChange: false,
-      bFilter: true,
+      bFilter: false,
       bInfo: false,
       bAutoWidth: false,
       searching: false
