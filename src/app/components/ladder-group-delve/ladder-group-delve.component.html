@@ -9,7 +9,7 @@
               </div>
             </div>
           </div>
-  
+
           <div class="row">
             <div class="col-md-6">
               <div class="card">
@@ -27,23 +27,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                        </tr>
-                        <tr>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                        </tr>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
+                        <tr *ngFor="let entry of softcore">
+                          <td>{{entry.rank}}</td>
+                          <td>{{entry.character}}</td>
+                          <td>{{entry.ascendancy}}</td>
+                          <td>{{entry.depth}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -67,23 +55,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                        </tr>
-                        <tr>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                        </tr>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
+                        <tr *ngFor="let entry of hardcore">
+                          <td>{{entry.rank}}</td>
+                          <td>{{entry.character}}</td>
+                          <td>{{entry.ascendancy}}</td>
+                          <td>{{entry.depth}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -103,30 +79,18 @@
                       [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                       <thead>
                         <tr>
-                          <th>Name</th>
-                          <th>Email</th>
-                          <th>Website</th>
-                          <th>Email</th>
+                          <th>#</th>
+                          <th>Character</th>
+                          <th>Asc</th>
+                          <th>Depth</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                        </tr>
-                        <tr>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                        </tr>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
+                        <tr *ngFor="let entry of softcoreSsf">
+                          <td>{{entry.rank}}</td>
+                          <td>{{entry.character}}</td>
+                          <td>{{entry.ascendancy}}</td>
+                          <td>{{entry.depth}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -150,23 +114,11 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                        </tr>
-                        <tr>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                          <td>test2</td>
-                        </tr>
-                        <tr>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
-                          <td>test1</td>
+                        <tr *ngFor="let entry of hardcoreSsf">
+                          <td>{{entry.rank}}</td>
+                          <td>{{entry.character}}</td>
+                          <td>{{entry.ascendancy}}</td>
+                          <td>{{entry.depth}}</td>
                         </tr>
                       </tbody>
                     </table>

@@ -10,24 +10,23 @@ import { TopFiveLeaguePanelComponent } from './components/top-five-league-panel/
 import { LadderGroupRaceComponent } from './components/ladder-group-race/ladder-group-race.component';
 import { LadderGroupUberlabComponent } from './components/ladder-group-uberlab/ladder-group-uberlab.component';
 import { DataTablesModule } from 'angular-datatables';
-import { LadderService } from './services/ladder.service';
 
 
 @NgModule({
   declarations: [
-    AppComponent,    
-    NavbarComponent,    
-    TopFiveLeaguePanelComponent,    
+    AppComponent,
+    NavbarComponent,
+    TopFiveLeaguePanelComponent,
     routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DataTablesModule,
-    HttpClientModule    
-  ],  
+    HttpClientModule
+  ],
   providers: [
-    LadderService
+
   ],
   bootstrap: [AppComponent]
 })
