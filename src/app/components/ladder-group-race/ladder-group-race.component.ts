@@ -38,7 +38,7 @@ export class LadderGroupRaceComponent implements OnInit {
 
       for (var i = 0; i < this.raceTo100LeaderboardModel.length; i++) {
         if (
-          this.raceTo100LeaderboardModel[i].league.includes("Hardcore") && !this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
+          this.raceTo100LeaderboardModel[i].league.includes("HC") && !this.raceTo100LeaderboardModel[i].league.includes("SSF") || this.raceTo100LeaderboardModel[i].league.includes("Hardcore") && !this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
           this.hardcore.push(this.raceTo100LeaderboardModel[i]);
         } else if (this.raceTo100LeaderboardModel[i].league.includes("HC") && this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
           this.hardcoreSsf.push(this.raceTo100LeaderboardModel[i]);

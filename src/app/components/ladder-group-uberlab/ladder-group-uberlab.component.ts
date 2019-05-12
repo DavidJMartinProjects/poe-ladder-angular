@@ -37,9 +37,22 @@ export class LadderGroupUberlabComponent implements OnInit {
         );
       });
 
+      // for (var i = 0; i < this.uberlabLeaderboardModel.length; i++) {
+      //   if (
+      //     this.uberlabLeaderboardModel[i].league.includes("Hardcore") && !this.uberlabLeaderboardModel[i].league.includes("SSF")) {
+      //     this.hardcore.push(this.uberlabLeaderboardModel[i]);
+      //   } else if (this.uberlabLeaderboardModel[i].league.includes("HC") && this.uberlabLeaderboardModel[i].league.includes("SSF")) {
+      //     this.hardcoreSsf.push(this.uberlabLeaderboardModel[i]);
+      //   } else if (!this.uberlabLeaderboardModel[i].league.includes("SSF")) {
+      //     this.softcore.push(this.uberlabLeaderboardModel[i]);
+      //   } else if (this.uberlabLeaderboardModel[i].league.includes("SSF")) {
+      //     this.softcoreSsf.push(this.uberlabLeaderboardModel[i]);
+      //   }
+      // }
+
       for (var i = 0; i < this.uberlabLeaderboardModel.length; i++) {
         if (
-          this.uberlabLeaderboardModel[i].league.includes("Hardcore") && !this.uberlabLeaderboardModel[i].league.includes("SSF")) {
+          this.uberlabLeaderboardModel[i].league.includes("HC") && !this.uberlabLeaderboardModel[i].league.includes("SSF") || this.uberlabLeaderboardModel[i].league.includes("Hardcore") && !this.uberlabLeaderboardModel[i].league.includes("SSF")) {
           this.hardcore.push(this.uberlabLeaderboardModel[i]);
         } else if (this.uberlabLeaderboardModel[i].league.includes("HC") && this.uberlabLeaderboardModel[i].league.includes("SSF")) {
           this.hardcoreSsf.push(this.uberlabLeaderboardModel[i]);

@@ -37,7 +37,7 @@ export class LadderGroupDelveComponent implements OnInit {
 
       for (var i = 0; i < this.delveLeaderboard.length; i++) {
         if (
-          this.delveLeaderboard[i].league.includes("Hardcore") && !this.delveLeaderboard[i].league.includes("SSF")) {
+          this.delveLeaderboard[i].league.includes("HC") && !this.delveLeaderboard[i].league.includes("SSF") || this.delveLeaderboard[i].league.includes("Hardcore") && !this.delveLeaderboard[i].league.includes("SSF")) {
           this.hardcore.push(this.delveLeaderboard[i]);
         } else if (this.delveLeaderboard[i].league.includes("HC") && this.delveLeaderboard[i].league.includes("SSF")) {
           this.hardcoreSsf.push(this.delveLeaderboard[i]);
