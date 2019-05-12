@@ -11,7 +11,8 @@ declare var $;
   styleUrls: ["./ladder-group-delve.component.css"]
 })
 export class LadderGroupDelveComponent implements OnInit {
-  title = "app";
+  subscription: any;
+
   delveLeaderboard = new Array<DelveLeaderboardModel>();
   softcore = new Array<DelveLeaderboardModel>();
   hardcore = new Array<DelveLeaderboardModel>();
@@ -22,7 +23,7 @@ export class LadderGroupDelveComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
 
   constructor(leaderboardService: LeaderboardService) {
-    leaderboardService.getDelveLeaderboards().subscribe(response => {
+    this.subscription = leaderboardService.getDelveLeaderboards().subscribe(response => {
       this.delveLeaderboard = response.map(item => {
         return new DelveLeaderboardModel(
           item.rank,
@@ -46,26 +47,24 @@ export class LadderGroupDelveComponent implements OnInit {
           this.softcoreSsf.push(this.delveLeaderboard[i]);
         }
       }
-
-      console.log(this.delveLeaderboard.length);
-      console.log("hardcore : " + this.hardcore.length);
-      console.log("hardcoreSsf : " + this.hardcoreSsf.length);
-      console.log("softcore : " + this.softcore.length);
-      console.log("softcoreSsf : " + this.softcoreSsf.length);
     });
   }
 
   ngOnInit() {}
 
-
   ngAfterViewInit() {
     $('datatable').DataTable({
       bPaginate: false,
-      bLengthChange: false,
+      bLengthChange: true,
       bFilter: false,
       bInfo: false,
       bAutoWidth: false,
       searching: false
     });
   }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }
