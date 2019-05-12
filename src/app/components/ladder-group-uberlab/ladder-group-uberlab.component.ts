@@ -19,6 +19,7 @@ export class LadderGroupUberlabComponent implements OnInit {
   hardcore = new Array<UberlabLeaderboardModel>();
   softcoreSsf = new Array<UberlabLeaderboardModel>();
   hardcoreSsf = new Array<UberlabLeaderboardModel>();
+  leagueName: string;
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -48,6 +49,7 @@ export class LadderGroupUberlabComponent implements OnInit {
           this.softcoreSsf.push(this.uberlabLeaderboardModel[i]);
         }
       }
+      this.leagueName = this.uberlabLeaderboardModel[0].league;
     });
   }
 
