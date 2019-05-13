@@ -11,20 +11,20 @@ import { LadderGroupRaceComponent } from './components/ladder-group-race/ladder-
 import { LadderGroupUberlabComponent } from './components/ladder-group-uberlab/ladder-group-uberlab.component';
 import { DataTablesModule } from 'angular-datatables';
 import { Top100leaderboardComponent } from './components/top100leaderboard/top100leaderboard.component';
-
+import { SelectLeagueButtonsComponent } from './components/select-league-buttons/select-league-buttons.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     TopFiveLeaguePanelComponent,
-    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent
+    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent, SelectLeagueButtonsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DataTablesModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
 

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DelveLeaderboardModel } from '../models/DelveLeaderboardModel';
 import { RaceTo100LeaderboardModel } from '../models/RaceTo100LeaderboardModel';
 import { UberlabLeaderboardModel } from '../models/UberlabLeaderboardModel';
+import { LeagueNameModel } from '../models/LeagueNameModel';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,11 @@ export class LeaderboardService{
     console.log('service recieved request for : http://localhost:8080/leaderboard-delve/'+league);
     return this.http.get<DelveLeaderboardModel[]>(url);
   }
+
+  public getLeagueNames(): Observable<LeagueNameModel[]> {
+    const url = 'http://localhost:8080/league-names';
+    console.log("getLeagueNames() called");
+    return this.http.get<LeagueNameModel[]>(url);
+  }
+
 }

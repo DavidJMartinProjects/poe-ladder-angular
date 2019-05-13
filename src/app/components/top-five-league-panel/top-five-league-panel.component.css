@@ -1,8 +1,14 @@
 .card {
-    margin-top: 1em;
+    margin-top: 0px;
     border: 0;
     background-color: black;
 }
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 10px;
+}
+
 
 .btn {
   background: #1C2F35;
@@ -12,4 +18,36 @@
 .navbar-brand {
   color: white;
 }
+
+.btn {
+  background-color: #1C2F35;
+  border-color: #6c757d!important;
+ }
+
+ .text-body {
+   color: #f2f5f9!important;
+ }
+
+ #leagueNameBtn {
+  width: 10em;
+ }
+
+ .radio-inline {
+  margin: 15px;
+}
+
+
+input[type="radio"] {
+  height: 15px;
+  width: 15px;
+  display: inline-block;
+  cursor: pointer;
+  vertical-align: middle;
+
+}
+
+
+
+
+
 
