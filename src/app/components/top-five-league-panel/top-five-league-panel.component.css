@@ -1,7 +1,15 @@
 .card {
     margin-top: 1em;
     border: 0;
+    background-color: black;
 }
 
+.btn {
+  background: #1C2F35;
+  color: white;
+}
 
+.navbar-brand {
+  color: white;
+}
 

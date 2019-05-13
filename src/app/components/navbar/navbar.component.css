@@ -1,0 +1,21 @@
+.navbar {
+  background-color: black;
+}
+
+.btn {
+ background-color: #1C2F35;
+ border-color: #6c757d!important;
+}
+
+.text-body {
+  color: #f2f5f9!important;
+}
+
+.navbar {
+  background-color: black!important;
+}
+
+.border-info {
+  border-color: #1C2F35!important;
+  border-bottom: 2px solid!important;
+}

@@ -8,8 +8,9 @@
   <base href="/">
 </head>
 
-<body >
- <!-- <div class="img-responsive" style="background-image: url(./images/poe-ladder-background.jpg) background-position: top; background-repeat: no-repeat; height:100%; width:100%;"></div> -->
+<!-- <body [style.background-image] = 'url(\'images\poe-ladder-background.jpg\)'> -->
+<body class="image">
+    <!-- <div [ngStyle]="{background: 'url(\'../../images/poe-ladder-background.jpg\)'}"></div> -->
   <div class="container-fluid">
     <app-navbar></app-navbar>
     <app-top-five-league-panel></app-top-five-league-panel>
