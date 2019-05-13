@@ -19,3 +19,10 @@
   border-color: #1C2F35!important;
   border-bottom: 2px solid!important;
 }
+
+#logo-text {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+  "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
