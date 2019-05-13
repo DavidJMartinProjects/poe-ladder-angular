@@ -10,6 +10,7 @@ import { TopFiveLeaguePanelComponent } from './components/top-five-league-panel/
 import { LadderGroupRaceComponent } from './components/ladder-group-race/ladder-group-race.component';
 import { LadderGroupUberlabComponent } from './components/ladder-group-uberlab/ladder-group-uberlab.component';
 import { DataTablesModule } from 'angular-datatables';
+import { Top100leaderboardComponent } from './components/top100leaderboard/top100leaderboard.component';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import { DataTablesModule } from 'angular-datatables';
     AppComponent,
     NavbarComponent,
     TopFiveLeaguePanelComponent,
-    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent
+    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent
   ],
   imports: [
     BrowserModule,

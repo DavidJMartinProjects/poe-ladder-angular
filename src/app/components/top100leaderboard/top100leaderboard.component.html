@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <!-- <div class="card mx-auto" id="parent-card"> -->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mx-auto">
+                <div class="card-header text-center">
+                    <div class="row">
+                        <div class="col">
+                        </div>
+                        <div class="col-6">
+                            Top #100 Delve Depths : {{delveLeaderboard[0].league}}
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-primary btn-sm float-right">Return to Top #5</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Character</th>
+                          <th>Asc</th>
+                          <th>Depth</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let entry of delveLeaderboard">
+                          <td>{{entry.rank}}</td>
+                          <td>{{entry.character}}</td>
+                          <td>{{entry.ascendancy}}</td>
+                          <td>{{entry.depth}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+

@@ -2,6 +2,7 @@ import { LeaderboardService } from "./../../services/leaderboard-service.service
 import { DelveLeaderboardModel } from "./../../models/DelveLeaderboardModel";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 declare var $;
 
@@ -22,7 +23,7 @@ export class LadderGroupDelveComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(leaderboardService: LeaderboardService) {
+  constructor(private leaderboardService: LeaderboardService, private router: Router) {
     this.subscription = leaderboardService.getDelveLeaderboards().subscribe(response => {
       this.delveLeaderboard = response.map(item => {
         return new DelveLeaderboardModel(
@@ -51,6 +52,13 @@ export class LadderGroupDelveComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  onClick(league: string, leaderboard: string) {
+    this.router.navigate(['/top-100/delve/', league]);
+    const theLeague = league.replace(/ /g, '').toLowerCase();
+    const theLeaderboard= leaderboard.replace(/ /g, '').toLowerCase();
+    console.log('/top-100/'+ theLeaderboard +'/'+ theLeague);
+  }
 
   ngAfterViewInit() {
       $('datatable').DataTable({

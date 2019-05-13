@@ -26,4 +26,10 @@ export class LeaderboardService{
     const url = 'http://localhost:8080/leaderboard-uberlab';
     return this.http.get<UberlabLeaderboardModel[]>(url);
   }
+
+  getDelveTop100Leaderboards(league: string): Observable<DelveLeaderboardModel[]> {
+    const url = 'http://localhost:8080/leaderboard-delve';
+    console.log('service recieved request for : http://localhost:8080/leaderboard-delve/'+league);
+    return this.http.get<DelveLeaderboardModel[]>(url);
+  }
 }
