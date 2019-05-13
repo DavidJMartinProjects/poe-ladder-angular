@@ -53,7 +53,7 @@ export class LadderGroupDelveComponent implements OnInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    $('datatable').DataTable({
+      $('datatable').DataTable({
       bPaginate: false,
       bLengthChange: true,
       bFilter: false,

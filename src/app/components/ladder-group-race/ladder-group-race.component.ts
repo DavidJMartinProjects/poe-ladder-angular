@@ -55,15 +55,16 @@ export class LadderGroupRaceComponent implements OnInit {
 
   ngAfterViewInit() {
     $('datatable').DataTable({
-      bPaginate: false,
-      bLengthChange: true,
-      bFilter: false,
-      bInfo: false,
-      bAutoWidth: false,
-      searching: false
+      // bPaginate: false,
+      // bLengthChange: true,
+      // bFilter: false,
+      // bInfo: false,
+      // bAutoWidth: false,
+      // searching: false
     });
   }
 
+// tslint:disable-next-line: use-life-cycle-interface
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
