@@ -36,3 +36,10 @@ background-color: #1C2F35;
 padding: 4px;
 color: white;
 }
+
+.btn {
+  background-color: #010e11;
+  border-color: white;
+  margin-right: 12%;
+  height: 100%;
+}

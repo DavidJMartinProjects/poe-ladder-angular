@@ -36,9 +36,12 @@ thead {
   color: white;
 }
 
-.tr {
-  border:blue;
-  color: blue;
+.btn {
+  background-color: #010e11;
+  border-color: white;
+  float: right;
+  margin-right: 12%;
+  height: 100%;
 }
 
 
