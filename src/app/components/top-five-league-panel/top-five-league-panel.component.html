@@ -3,11 +3,11 @@
     <div class="card-body">
 
         <div class="row">
-            <form class="mx-auto">
-                <label class="radio-inline" *ngFor="let entry of leagueNames">
-                  <input type="radio" name="optradio" checked>   {{entry.leagueName}}
+            <div class="radio mx-auto" >
+                <label class="radio-inline " *ngFor="let entry of leagueNames">
+                  <input type="radio" name="optradio" checked [(ngModel)]="selectedLeague" [value] = "entry">   {{entry.leagueName}}
                 </label>
-              </form>
+              </div>
         </div>
 
         <!-- <mat-radio-group class = "tp-radio-group" [(ngModel)] = "selectedLeague">
@@ -33,9 +33,9 @@
                          Select Leaderboard
                          </button>
                          <div class="dropdown-menu">
-                            <a class="dropdown-item" [routerLink]="['/ladder-group-race']" routerLinkActive="active" >Race to 100</a>
-                            <a class="dropdown-item" [routerLink]="['/ladder-group-delve']" routerLinkActive="active">Delve Depths</a>
-                            <a class="dropdown-item" [routerLink]="['/ladder-group-uberlab']" routerLinkActive="active">Uber Lab Times</a>
+                            <a class="dropdown-item" (click)="onClickRace(selectedLeague.leagueName)" >Race to 100</a>
+                            <a class="dropdown-item" (click)="onClickDelve(selectedLeague.leagueName)" >Delve Depths</a>
+                            <a class="dropdown-item" (click)="onClickUberlab(selectedLeague.leagueName)" >Uber Lab Times</a>
                          </div>
                       </div>
                    </div>

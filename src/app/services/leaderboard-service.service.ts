@@ -13,8 +13,9 @@ export class LeaderboardService{
 
   constructor(private http: HttpClient) { }
 
-  public getDelveLeaderboards(): Observable<DelveLeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard-delve';
+  public getDelveLeaderboards(leagueName: string): Observable<DelveLeaderboardModel[]> {
+    const url = 'http://localhost:8080/leaderboard?leagueName='+leagueName+'&leaderboard=Top Delve Depths';
+    console.log("service.getDelveLeaderboards() url call to : " + url);
     return this.http.get<DelveLeaderboardModel[]>(url);
   }
 

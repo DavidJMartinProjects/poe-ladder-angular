@@ -1,8 +1,9 @@
+import { LeagueNameModel } from './../../models/LeagueNameModel';
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { DelveLeaderboardModel } from "./../../models/DelveLeaderboardModel";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Subject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $;
 
@@ -14,6 +15,7 @@ declare var $;
 export class LadderGroupDelveComponent implements OnInit {
   subscription: any;
 
+  league: string;
   delveLeaderboard = new Array<DelveLeaderboardModel>();
   softcore = new Array<DelveLeaderboardModel>();
   hardcore = new Array<DelveLeaderboardModel>();
@@ -23,8 +25,11 @@ export class LadderGroupDelveComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private leaderboardService: LeaderboardService, private router: Router) {
-    this.subscription = leaderboardService.getDelveLeaderboards().subscribe(response => {
+  constructor(private leaderboardService: LeaderboardService, private router: Router, activatedRoute: ActivatedRoute) {
+    this.league = activatedRoute.snapshot.paramMap.get('league');
+    console.log("passed in league parameter : " + this.league);
+
+    this.subscription = leaderboardService.getDelveLeaderboards(this.league).subscribe(response => {
       this.delveLeaderboard = response.map(item => {
         return new DelveLeaderboardModel(
           item.rank,
@@ -42,7 +47,7 @@ export class LadderGroupDelveComponent implements OnInit {
           this.hardcore.push(this.delveLeaderboard[i]);
         } else if (this.delveLeaderboard[i].league.includes("HC") && this.delveLeaderboard[i].league.includes("SSF")) {
           this.hardcoreSsf.push(this.delveLeaderboard[i]);
-        } else if (!this.delveLeaderboard[i].league.includes("SSF")) {
+        } else if (!this.delveLeaderboard[i].league.includes("SSF") || this.delveLeaderboard[i].league.includes("Standard")) {
           this.softcore.push(this.delveLeaderboard[i]);
         } else if (this.delveLeaderboard[i].league.includes("SSF")) {
           this.softcoreSsf.push(this.delveLeaderboard[i]);
@@ -72,7 +77,7 @@ export class LadderGroupDelveComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
 }

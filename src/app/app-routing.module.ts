@@ -7,12 +7,10 @@ import { LadderGroupUberlabComponent } from './components/ladder-group-uberlab/l
 import { Top100leaderboardComponent } from './components/top100leaderboard/top100leaderboard.component';
 
 const routes: Routes = [
-  {path: 'ladder-group-delve', component: LadderGroupDelveComponent},
-  {path: 'ladder-group-race', component: LadderGroupRaceComponent},
-  {path: 'ladder-group-uberlab', component: LadderGroupUberlabComponent},
-  {path: 'top-100/delve/:league', component: Top100leaderboardComponent},
-  {path: 'top-100/race-to-100/:league', component: Top100leaderboardComponent},
-  {path: 'top-100/uberlab/:league', component: Top100leaderboardComponent}
+  {path: 'leaderboard-top-5-delve/:league', component: LadderGroupDelveComponent},
+  {path: 'leaderboard-top-5-race/:league', component: LadderGroupRaceComponent},
+  {path: 'leaderboard-top-5-uberlab/:league', component: LadderGroupUberlabComponent},
+  {path: 'top-100/:league/:leaderboard', component: Top100leaderboardComponent},
 ];
 
 @NgModule({
@@ -23,5 +21,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   LadderGroupDelveComponent,
   LadderGroupRaceComponent,
-  LadderGroupUberlabComponent
+  LadderGroupUberlabComponent,
+  Top100leaderboardComponent
 ];

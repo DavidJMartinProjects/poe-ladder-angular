@@ -12,6 +12,8 @@ import { LadderGroupUberlabComponent } from './components/ladder-group-uberlab/l
 import { DataTablesModule } from 'angular-datatables';
 import { Top100leaderboardComponent } from './components/top100leaderboard/top100leaderboard.component';
 import { SelectLeagueButtonsComponent } from './components/select-league-buttons/select-league-buttons.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { SelectLeagueButtonsComponent } from './components/select-league-buttons
     AppRoutingModule,
     DataTablesModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
 

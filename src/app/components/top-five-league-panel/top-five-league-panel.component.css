@@ -36,15 +36,15 @@
   margin: 15px;
 }
 
-
 input[type="radio"] {
-  height: 15px;
-  width: 15px;
+  height: 17px;
+  width: 17px;
   display: inline-block;
   cursor: pointer;
   vertical-align: middle;
-
 }
+
+
 
 
 

@@ -1,8 +1,8 @@
 import { LeagueNameModel } from './../../models/LeagueNameModel';
-import { Component, OnInit, AfterViewInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LeaderboardService } from 'src/app/services/leaderboard-service.service';
-import { FormControl } from "@angular/forms";
-import { Validators } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-five-league-panel',
@@ -14,7 +14,7 @@ export class TopFiveLeaguePanelComponent implements OnInit {
   subscription: any;
   selectedLeague: LeagueNameModel;
 
-  constructor(leaderboardService: LeaderboardService) {
+  constructor(private leaderboardService: LeaderboardService, private formsModule: FormsModule, private router: Router) {
     this.subscription = leaderboardService
       .getLeagueNames()
       .subscribe(response => {
@@ -26,22 +26,30 @@ export class TopFiveLeaguePanelComponent implements OnInit {
       console.log("leagueNames : " + this.leagueNames);
   }
 
+  onClickRace(league: string) {
+    this.router.navigate(['/leaderboard-top-5-race/', league]);
+    console.log('selectedLeague : '+ league);
+  }
+
+  onClickDelve(league: string) {
+    this.router.navigate(['/leaderboard-top-5-delve/', league]);
+    console.log('selectedLeague : '+ league);
+  }
+
+  onClickUberlab( league: string) {
+    this.router.navigate(['/leaderboard-top-5-uberlab/', league]);
+    console.log('selectedLeague : '+ league);
+  }
 
   ngOnInit() {
     $('.table').DataTable();
   }
 
-  ngAfterViewInit() {
-    $(".btn-group > .button").click(function(){
-      $(".btn-group > .button").removeClass("active");
-      console.log('clicked!');
-      $(this).addClass("active");
-    });
 }
 
 
 
-}
+
 
 
 
