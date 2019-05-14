@@ -8,7 +8,7 @@
                         <div class="col">
                         </div>
                         <div class="col-6">
-                            Top #100 Delve Depths : {{delveLeaderboard[0].league}}
+                            {{delveLeaderboard[0].leaderboard}} : {{delveLeaderboard[0].league}}
                         </div>
                         <div class="col">
                             <button type="button" class="btn btn-primary btn-sm float-right">Return to Top #5</button>
@@ -29,7 +29,7 @@
                           <td>{{entry.account}}</td>
                           <td>{{entry.character}}</td>
                           <td>{{entry.ascendancy}}</td>
-                          <td>{{entry.depth}}</td>
+                          <td>{{entry.depth}} {{entry.level}} {{entry.time}}</td>
                         </tr>
                       </tbody>
                     </table>

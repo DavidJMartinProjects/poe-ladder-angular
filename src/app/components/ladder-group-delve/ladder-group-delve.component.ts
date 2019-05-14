@@ -1,8 +1,8 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
-import { DelveLeaderboardModel } from "./../../models/DelveLeaderboardModel";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
 
 declare var $;
 
@@ -18,11 +18,11 @@ export class LadderGroupDelveComponent implements OnInit, OnDestroy {
   subscription: any;
   league: string;
 
-  delveLeaderboard = new Array<DelveLeaderboardModel>();
-  softcore = new Array<DelveLeaderboardModel>();
-  hardcore = new Array<DelveLeaderboardModel>();
-  softcoreSsf = new Array<DelveLeaderboardModel>();
-  hardcoreSsf = new Array<DelveLeaderboardModel>();
+  delveLeaderboard = new Array<LeaderboardModel>();
+  softcore = new Array<LeaderboardModel>();
+  hardcore = new Array<LeaderboardModel>();
+  softcoreSsf = new Array<LeaderboardModel>();
+  hardcoreSsf = new Array<LeaderboardModel>();
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -35,22 +35,24 @@ export class LadderGroupDelveComponent implements OnInit, OnDestroy {
       this.league = params['league']; // (+) converts string 'id' to a number
       console.log("ngOnInit() league : " + this.league);
 
-      this.delveLeaderboard = new Array<DelveLeaderboardModel>();
-      this.softcore = new Array<DelveLeaderboardModel>();
-      this.hardcore = new Array<DelveLeaderboardModel>();
-      this.softcoreSsf = new Array<DelveLeaderboardModel>();
-      this.hardcoreSsf = new Array<DelveLeaderboardModel>();
+      this.delveLeaderboard = new Array<LeaderboardModel>();
+      this.softcore = new Array<LeaderboardModel>();
+      this.hardcore = new Array<LeaderboardModel>();
+      this.softcoreSsf = new Array<LeaderboardModel>();
+      this.hardcoreSsf = new Array<LeaderboardModel>();
 
       this.subscription = this.leaderboardService.getDelveLeaderboards(this.league).subscribe(response => {
         this.delveLeaderboard = response.map(item => {
-          return new DelveLeaderboardModel(
+          return new LeaderboardModel(
             item.rank,
+            item.account,
             item.character,
             item.ascendancy,
-            item.depth,
             item.league,
             item.leaderboard,
-            item.account
+            item.level,
+            item.depth,
+            item.time
           );
         });
 

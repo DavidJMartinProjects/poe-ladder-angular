@@ -1,8 +1,8 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
-import { RaceTo100LeaderboardModel } from "../../models/RaceTo100LeaderboardModel";
+import { LeaderboardModel } from "../../models/LeaderboardModel";
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute, Router} from '@angular/router';
-import { Subject } from 'rxjs';
+import { Subject, from } from 'rxjs';
 
 declare var $;
 
@@ -19,11 +19,11 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
   subscription: any;
   league: string;
 
-  raceTo100LeaderboardModel = new Array<RaceTo100LeaderboardModel>();
-  softcore = new Array<RaceTo100LeaderboardModel>();
-  hardcore = new Array<RaceTo100LeaderboardModel>();
-  softcoreSsf = new Array<RaceTo100LeaderboardModel>();
-  hardcoreSsf = new Array<RaceTo100LeaderboardModel>();
+  raceTo100LeaderboardModel = new Array<LeaderboardModel>();
+  softcore = new Array<LeaderboardModel>();
+  hardcore = new Array<LeaderboardModel>();
+  softcoreSsf = new Array<LeaderboardModel>();
+  hardcoreSsf = new Array<LeaderboardModel>();
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -35,22 +35,24 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
       this.league = params['league']; // (+) converts string 'id' to a number
       console.log("ngOnInit() league : " + this.league);
 
-      this.raceTo100LeaderboardModel = new Array<RaceTo100LeaderboardModel>();
-      this.softcore = new Array<RaceTo100LeaderboardModel>();
-      this.hardcore = new Array<RaceTo100LeaderboardModel>();
-      this.softcoreSsf = new Array<RaceTo100LeaderboardModel>();
-      this.hardcoreSsf = new Array<RaceTo100LeaderboardModel>();
+      this.raceTo100LeaderboardModel = new Array<LeaderboardModel>();
+      this.softcore = new Array<LeaderboardModel>();
+      this.hardcore = new Array<LeaderboardModel>();
+      this.softcoreSsf = new Array<LeaderboardModel>();
+      this.hardcoreSsf = new Array<LeaderboardModel>();
 
       this.subscription = this.leaderboardService.getRaceTo100Leaderboards(this.league).subscribe(response => {
         this.raceTo100LeaderboardModel = response.map(item => {
-          return new RaceTo100LeaderboardModel(
+          return new LeaderboardModel(
             item.rank,
+            item.account,
             item.character,
             item.ascendancy,
-            item.level,
             item.league,
             item.leaderboard,
-            item.account
+            item.level,
+            item.depth,
+            item.time
           );
         });
 

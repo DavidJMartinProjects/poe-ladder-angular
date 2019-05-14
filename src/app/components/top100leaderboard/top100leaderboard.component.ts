@@ -1,9 +1,8 @@
 import { TableColumnModel } from './../../models/TableColumnModel';
-import { DelveLeaderboardModel } from "./../../models/DelveLeaderboardModel";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
-import { Subject } from "rxjs";
+import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
 
 @Component({
   selector: "app-top100leaderboard",
@@ -15,7 +14,7 @@ export class Top100leaderboardComponent implements OnInit {
   leaderboard: string;
   subscription: any;
   tableColumnSubscription: any;
-  delveLeaderboard = new Array<DelveLeaderboardModel>();
+  delveLeaderboard = new Array<LeaderboardModel>();
   tableColumns = new Array<TableColumnModel>();
 
   dtOptions: DataTables.Settings = {
@@ -40,14 +39,16 @@ export class Top100leaderboardComponent implements OnInit {
       .getLeaderboardLadder(this.league, this.leaderboard)
       .subscribe(response => {
         this.delveLeaderboard = response.map(item => {
-          return new DelveLeaderboardModel(
+          return new LeaderboardModel(
             item.rank,
+            item.account,
             item.character,
             item.ascendancy,
-            item.depth,
             item.league,
             item.leaderboard,
-            item.account
+            item.level,
+            item.depth,
+            item.time
           );
         });
       });

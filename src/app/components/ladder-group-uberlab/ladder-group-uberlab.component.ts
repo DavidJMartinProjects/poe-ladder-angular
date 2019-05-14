@@ -1,8 +1,8 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
-import { UberlabLeaderboardModel } from "../../models/UberlabLeaderboardModel";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
+import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
 
 declare var $;
 
@@ -18,11 +18,11 @@ export class LadderGroupUberlabComponent implements OnInit {
   subscription: any;
   league: string;
 
-  uberlabLeaderboard = new Array<UberlabLeaderboardModel>();
-  softcore = new Array<UberlabLeaderboardModel>();
-  hardcore = new Array<UberlabLeaderboardModel>();
-  softcoreSsf = new Array<UberlabLeaderboardModel>();
-  hardcoreSsf = new Array<UberlabLeaderboardModel>();
+  uberlabLeaderboard = new Array<LeaderboardModel>();
+  softcore = new Array<LeaderboardModel>();
+  hardcore = new Array<LeaderboardModel>();
+  softcoreSsf = new Array<LeaderboardModel>();
+  hardcoreSsf = new Array<LeaderboardModel>();
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
@@ -35,22 +35,24 @@ export class LadderGroupUberlabComponent implements OnInit {
       this.league = params['league']; // (+) converts string 'id' to a number
       console.log("ngOnInit() league : " + this.league);
 
-      this.uberlabLeaderboard = new Array<UberlabLeaderboardModel>();
-      this.softcore = new Array<UberlabLeaderboardModel>();
-      this.hardcore = new Array<UberlabLeaderboardModel>();
-      this.softcoreSsf = new Array<UberlabLeaderboardModel>();
-      this.hardcoreSsf = new Array<UberlabLeaderboardModel>();
+      this.uberlabLeaderboard = new Array<LeaderboardModel>();
+      this.softcore = new Array<LeaderboardModel>();
+      this.hardcore = new Array<LeaderboardModel>();
+      this.softcoreSsf = new Array<LeaderboardModel>();
+      this.hardcoreSsf = new Array<LeaderboardModel>();
 
       this.subscription = this.leaderboardService.getUberlabLeaderboards(this.league).subscribe(response => {
         this.uberlabLeaderboard = response.map(item => {
-          return new UberlabLeaderboardModel(
+          return new LeaderboardModel(
             item.rank,
+            item.account,
             item.character,
             item.ascendancy,
-            item.time,
             item.league,
             item.leaderboard,
-            item.account
+            item.level,
+            item.depth,
+            item.time
           );
         });
 
