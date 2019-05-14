@@ -14,26 +14,26 @@ export class LeaderboardService{
   constructor(private http: HttpClient) { }
 
   public getDelveLeaderboards(leagueName: string): Observable<DelveLeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard?leagueName='+leagueName+'&leaderboard=Top Delve Depths';
+    const url = 'http://localhost:8080/leaderboards?leagueName='+leagueName+'&leaderboard=Top Delve Depths';
     console.log("service.getDelveLeaderboards() url call to : " + url);
     return this.http.get<DelveLeaderboardModel[]>(url);
   }
 
   public getRaceTo100Leaderboards(leagueName: string): Observable<RaceTo100LeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard?leagueName='+leagueName+'&leaderboard=Top Race to 100';
+    const url = 'http://localhost:8080/leaderboards?leagueName='+leagueName+'&leaderboard=Top Race to 100';
     console.log("service.getRaceTo100Leaderboards() url call to : " + url);
     return this.http.get<RaceTo100LeaderboardModel[]>(url);
   }
 
   public getUberlabLeaderboards(leagueName: string): Observable<UberlabLeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard?leagueName='+leagueName+'&leaderboard=Top UberLab Times';
+    const url = 'http://localhost:8080/leaderboards?leagueName='+leagueName+'&leaderboard=Top UberLab Times';
     console.log("service.getUberlabLeaderboards() url call to : " + url);
     return this.http.get<UberlabLeaderboardModel[]>(url);
   }
 
-  getDelveTop100Leaderboards(league: string): Observable<DelveLeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard-delve';
-    console.log('service recieved request for : http://localhost:8080/leaderboard-delve/'+league);
+  public getLeaderboardLadder(league: string, leaderboard: string): Observable<DelveLeaderboardModel[]> {
+    const url = 'http://localhost:8080/leaderboard-ladder?leagueName='+league+'&leaderboard='+leaderboard;
+    console.log('service recieved request for : '+url);
     return this.http.get<DelveLeaderboardModel[]>(url);
   }
 

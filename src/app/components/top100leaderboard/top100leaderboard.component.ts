@@ -11,6 +11,7 @@ import { Subject } from "rxjs";
 })
 export class Top100leaderboardComponent implements OnInit {
   league: string;
+  leaderboard: string;
   subscription: any;
   delveLeaderboard = new Array<DelveLeaderboardModel>();
 
@@ -27,10 +28,12 @@ export class Top100leaderboardComponent implements OnInit {
     leaderboardService: LeaderboardService
   ) {
     this.league = activatedRoute.snapshot.paramMap.get("league");
+    this.leaderboard = activatedRoute.snapshot.paramMap.get("leaderboard");
     console.log("league : " + this.league);
+    console.log("leaderboard : " + this.leaderboard);
 
     this.subscription = leaderboardService
-      .getDelveTop100Leaderboards(this.league)
+      .getLeaderboardLadder(this.league, this.leaderboard)
       .subscribe(response => {
         this.delveLeaderboard = response.map(item => {
           return new DelveLeaderboardModel(

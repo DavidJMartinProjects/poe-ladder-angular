@@ -21,6 +21,7 @@
                       <thead>
                         <tr>
                           <th>#</th>
+                          <th>Account</th>
                           <th>Character</th>
                           <th>Asc</th>
                           <th>Depth</th>
@@ -29,6 +30,7 @@
                       <tbody>
                         <tr *ngFor="let entry of delveLeaderboard">
                           <td>{{entry.rank}}</td>
+                          <td>{{entry.account}}</td>
                           <td>{{entry.character}}</td>
                           <td>{{entry.ascendancy}}</td>
                           <td>{{entry.depth}}</td>

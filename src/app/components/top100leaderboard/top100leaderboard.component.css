@@ -1,6 +1,6 @@
 .card {
   margin-top: 1em;
-  width: 60%;
+  width: 53%;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
@@ -18,7 +18,7 @@
 }
 
 .container-fluid {
-width: 70%;
+width: 100%;
 }
 
 .col-md-12 {
