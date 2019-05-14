@@ -1,3 +1,4 @@
+import { TableColumnModel } from './../models/TableColumnModel';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -5,6 +6,7 @@ import { DelveLeaderboardModel } from '../models/DelveLeaderboardModel';
 import { RaceTo100LeaderboardModel } from '../models/RaceTo100LeaderboardModel';
 import { UberlabLeaderboardModel } from '../models/UberlabLeaderboardModel';
 import { LeagueNameModel } from '../models/LeagueNameModel';
+import { stringify } from 'querystring';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +43,20 @@ export class LeaderboardService{
     const url = 'http://localhost:8080/league-names';
     console.log("getLeagueNames() called");
     return this.http.get<LeagueNameModel[]>(url);
+  }
+
+  public getLeaderboardTableColumns(league: string) {
+    console.log("getLeaderboardTableColumns() league : " + league);
+    let url = "";
+    if(league.includes("Delve")) {
+      url = 'http://localhost:8080/leaderboard-columns-delve';
+    } else if(league.includes("UberLab")){
+      url = 'http://localhost:8080/leaderboard-columns-uberlab';
+    } else if(league.includes("Race")){
+      url = 'http://localhost:8080/leaderboard-columns-raceto100';
+    }
+    console.log("getLeaderboardTableColumns() url : " + url);
+    return this.http.get<TableColumnModel[]>(url);
   }
 
 }

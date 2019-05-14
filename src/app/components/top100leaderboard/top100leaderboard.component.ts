@@ -1,3 +1,4 @@
+import { TableColumnModel } from './../../models/TableColumnModel';
 import { DelveLeaderboardModel } from "./../../models/DelveLeaderboardModel";
 import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
@@ -13,7 +14,9 @@ export class Top100leaderboardComponent implements OnInit {
   league: string;
   leaderboard: string;
   subscription: any;
+  tableColumnSubscription: any;
   delveLeaderboard = new Array<DelveLeaderboardModel>();
+  tableColumns = new Array<TableColumnModel>();
 
   dtOptions: DataTables.Settings = {
     searching: true, // Search Box will Be Disabled
@@ -32,6 +35,7 @@ export class Top100leaderboardComponent implements OnInit {
     console.log("league : " + this.league);
     console.log("leaderboard : " + this.leaderboard);
 
+
     this.subscription = leaderboardService
       .getLeaderboardLadder(this.league, this.leaderboard)
       .subscribe(response => {
@@ -47,10 +51,19 @@ export class Top100leaderboardComponent implements OnInit {
           );
         });
       });
+
+    this.tableColumnSubscription = leaderboardService
+    .getLeaderboardTableColumns(this.leaderboard)
+    .subscribe(response => {
+      this.tableColumns = response.map(item => {
+        return new TableColumnModel(
+          item.column
+        );
+      });
+    });
+
   }
 
-  ngOnInit(): void {
-    throw new Error("Method not implemented.");
-    console.log("no. of returned records : " + this.delveLeaderboard.length);
+  ngOnInit() {
   }
 }

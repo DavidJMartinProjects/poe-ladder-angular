@@ -20,11 +20,7 @@
                     <table class="table table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Account</th>
-                          <th>Character</th>
-                          <th>Asc</th>
-                          <th>Depth</th>
+                          <th *ngFor="let entry of tableColumns">{{entry.column}}</th>
                         </tr>
                       </thead>
                       <tbody>
