@@ -1,7 +1,7 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { RaceTo100LeaderboardModel } from "../../models/RaceTo100LeaderboardModel";
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Subject } from 'rxjs';
 
 declare var $;
@@ -28,7 +28,7 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute) {}
+  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
     this.subscription = this.activatedRoute.params.subscribe(params => {
@@ -67,6 +67,11 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
         }
       });
     });
+  }
+
+  onClick(league: string, leaderboard: string) {
+    this.router.navigate(['/top-100/', league, leaderboard]);
+    console.log('onClick /top-100/'+ leaderboard +'/'+ league);
   }
 
 

@@ -66,27 +66,13 @@ export class LadderGroupUberlabComponent implements OnInit {
             this.softcoreSsf.push(this.uberlabLeaderboard[i]);
           }
         }
-
-    });
-  });
-
+     });
+   });
   }
+
   onClick(league: string, leaderboard: string) {
-    this.router.navigate(['/top-100/delve/', league]);
-    const theLeague = league.replace(/ /g, '').toLowerCase();
-    const theLeaderboard= leaderboard.replace(/ /g, '').toLowerCase();
-    console.log('/top-100/'+ theLeaderboard +'/'+ theLeague);
+    this.router.navigate(['/top-100/', league, leaderboard]);
+    console.log('onClick /top-100/'+ leaderboard +'/'+ league);
   }
-
-  // ngAfterViewInit() {
-  //     $('datatable').DataTable({
-  //     bPaginate: false,
-  //     bLengthChange: true,
-  //     bFilter: false,
-  //     bInfo: false,
-  //     bAutoWidth: false,
-  //     searching: false
-  //   });
-  // }
 
 }

@@ -21,7 +21,8 @@
                           {{softcore[0].league}}
                       </div>
                       <div class="col">
-                          <button type="button" class="btn btn-primary btn-sm float-right">Show Top 100</button>
+                          <button type="button" class="btn btn-primary btn-sm float-right"
+                            (click)="onClick(softcore[0].league, softcore[0].leaderboard)">Show Top 100</button>
                       </div>
                   </div>
               </div>
@@ -61,7 +62,8 @@
                           {{hardcore[0].league}}
                       </div>
                       <div class="col">
-                          <button type="button" class="btn btn-primary btn-sm float-right">Show Top 100</button>
+                          <button type="button" class="btn btn-primary btn-sm float-right"
+                            (click)="onClick(hardcore[0].league, hardcore[0].leaderboard)">Show Top 100</button>
                       </div>
                   </div>
               </div>
@@ -105,7 +107,8 @@
                           {{softcoreSsf[0].league}}
                       </div>
                       <div class="col">
-                          <button type="button" class="btn btn-primary btn-sm float-right">Show Top 100</button>
+                          <button type="button" class="btn btn-primary btn-sm float-right"
+                           (click)="onClick(softcoreSsf[0].league, softcoreSsf[0].leaderboard)">Show Top 100</button>
                       </div>
                   </div>
               </div>
@@ -145,7 +148,8 @@
                           {{hardcoreSsf[0].league}}
                       </div>
                       <div class="col">
-                          <button type="button" class="btn btn-primary btn-sm float-right">Show Top 100</button>
+                          <button type="button" class="btn btn-primary btn-sm float-right"
+                           (click)="onClick(hardcoreSsf[0].league, hardcoreSsf[0].leaderboard)">Show Top 100</button>
                       </div>
                   </div>
               </div>
@@ -178,5 +182,4 @@
         </div>
       </div>
     </div>
-
 </div>
