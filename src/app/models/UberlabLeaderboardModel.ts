@@ -6,14 +6,16 @@ export class UberlabLeaderboardModel {
   public time: string;
   public league: string;
   public leaderboard: string;
+  public account: string;
 
-  constructor(rank:string, character:string, ascendancy:string, time:string, league:string, leaderboard:string) {
+  constructor(rank:string, character:string, ascendancy:string, time:string, league:string, leaderboard:string, account:string) {
     this.rank = rank;
     this.character = character;
     this.ascendancy = ascendancy;
     this.time = time;
     this.league = league;
     this.leaderboard = leaderboard;
+    this.account = account;
   }
 
 }

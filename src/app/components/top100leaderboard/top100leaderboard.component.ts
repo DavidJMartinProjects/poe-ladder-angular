@@ -39,7 +39,8 @@ export class Top100leaderboardComponent implements OnInit {
             item.ascendancy,
             item.depth,
             item.league,
-            item.leaderboard
+            item.leaderboard,
+            item.account
           );
         });
       });

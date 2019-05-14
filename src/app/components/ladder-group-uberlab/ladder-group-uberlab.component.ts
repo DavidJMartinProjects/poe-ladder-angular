@@ -49,7 +49,8 @@ export class LadderGroupUberlabComponent implements OnInit {
             item.ascendancy,
             item.time,
             item.league,
-            item.leaderboard
+            item.leaderboard,
+            item.account
           );
         });
 

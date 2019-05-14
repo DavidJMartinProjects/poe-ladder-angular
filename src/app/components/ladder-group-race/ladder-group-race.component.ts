@@ -49,7 +49,8 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
             item.ascendancy,
             item.level,
             item.league,
-            item.leaderboard
+            item.leaderboard,
+            item.account
           );
         });
 
