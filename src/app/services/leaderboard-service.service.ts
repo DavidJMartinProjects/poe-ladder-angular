@@ -19,13 +19,15 @@ export class LeaderboardService{
     return this.http.get<DelveLeaderboardModel[]>(url);
   }
 
-  public getRaceTo100Leaderboards(): Observable<RaceTo100LeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard-raceto100';
+  public getRaceTo100Leaderboards(leagueName: string): Observable<RaceTo100LeaderboardModel[]> {
+    const url = 'http://localhost:8080/leaderboard?leagueName='+leagueName+'&leaderboard=Top Race to 100';
+    console.log("service.getRaceTo100Leaderboards() url call to : " + url);
     return this.http.get<RaceTo100LeaderboardModel[]>(url);
   }
 
-  public getUberlabLeaderboards(): Observable<UberlabLeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboard-uberlab';
+  public getUberlabLeaderboards(leagueName: string): Observable<UberlabLeaderboardModel[]> {
+    const url = 'http://localhost:8080/leaderboard?leagueName='+leagueName+'&leaderboard=Top UberLab Times';
+    console.log("service.getUberlabLeaderboards() url call to : " + url);
     return this.http.get<UberlabLeaderboardModel[]>(url);
   }
 

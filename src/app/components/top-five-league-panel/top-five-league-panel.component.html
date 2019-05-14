@@ -9,40 +9,27 @@
                 </label>
               </div>
         </div>
-
-        <!-- <mat-radio-group class = "tp-radio-group" [(ngModel)] = "selectedLeague">
-            <mat-radio-button class = "tp-radio-button"
-            *ngFor="let entry of leagueNames" [value] = "entry">
-            {{entry.leagueName}}
-            </mat-radio-button>
-         </mat-radio-group>
-         <div class = "tp-selected-value">
-            Selected League: {{selectedLeague.leagueName}}
-         </div> -->
-
-
-
-             <div class="row">
-                <div class="col-sm">
-                </div>
-                <div class="col-sm">
-                   <div class="row">
-                      <!-- Default dropright button -->
-                      <div class="btn-group dropright mx-auto">
-                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Select Leaderboard
-                         </button>
-                         <div class="dropdown-menu">
-                            <a class="dropdown-item" (click)="onClickRace(selectedLeague.leagueName)" >Race to 100</a>
-                            <a class="dropdown-item" (click)="onClickDelve(selectedLeague.leagueName)" >Delve Depths</a>
-                            <a class="dropdown-item" (click)="onClickUberlab(selectedLeague.leagueName)" >Uber Lab Times</a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-                <div class="col-sm">
-                </div>
-             </div>
+          <div class="row">
+              <div class="col-sm">
+              </div>
+              <div class="col-sm">
+                  <div class="row">
+                    <!-- Default dropright button -->
+                    <div class="btn-group dropright mx-auto">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Select Leaderboard
+                        </button>
+                        <div class="dropdown-menu">
+                          <a class="dropdown-item" (click)="onClickRace(selectedLeague.leagueName)" >Race to 100</a>
+                          <a class="dropdown-item" (click)="onClickDelve(selectedLeague.leagueName)" >Delve Depths</a>
+                          <a class="dropdown-item" (click)="onClickUberlab(selectedLeague.leagueName)" >Uber Lab Times</a>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-sm">
+              </div>
+          </div>
           </div>
        </div>
        <div class="col-sm">

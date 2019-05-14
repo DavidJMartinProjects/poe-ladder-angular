@@ -45,6 +45,10 @@ export class TopFiveLeaguePanelComponent implements OnInit {
     $('.table').DataTable();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
 }
 
 

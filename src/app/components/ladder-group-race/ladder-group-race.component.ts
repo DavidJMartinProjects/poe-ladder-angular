@@ -1,6 +1,8 @@
+import { LeagueNameModel } from './../../models/LeagueNameModel';
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { RaceTo100LeaderboardModel } from "../../models/RaceTo100LeaderboardModel";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { ActivatedRoute} from '@angular/router';
 import { Subject } from 'rxjs';
 
 declare var $;
@@ -11,8 +13,12 @@ declare var $;
   styleUrls: ['./ladder-group-race.component.css']
 })
 
-export class LadderGroupRaceComponent implements OnInit {
+export class LadderGroupRaceComponent implements OnInit, OnDestroy {
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
   subscription: any;
+  league: string;
 
   raceTo100LeaderboardModel = new Array<RaceTo100LeaderboardModel>();
   softcore = new Array<RaceTo100LeaderboardModel>();
@@ -23,49 +29,47 @@ export class LadderGroupRaceComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(leaderboardService: LeaderboardService) {
-    this.subscription = leaderboardService.getRaceTo100Leaderboards().subscribe(response => {
-      this.raceTo100LeaderboardModel = response.map(item => {
-        return new RaceTo100LeaderboardModel(
-          item.rank,
-          item.character,
-          item.ascendancy,
-          item.level,
-          item.league,
-          item.leaderboard
-        );
-      });
+  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute) {}
 
-      for (var i = 0; i < this.raceTo100LeaderboardModel.length; i++) {
-        if (
-          this.raceTo100LeaderboardModel[i].league.includes("HC") && !this.raceTo100LeaderboardModel[i].league.includes("SSF") || this.raceTo100LeaderboardModel[i].league.includes("Hardcore") && !this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
-          this.hardcore.push(this.raceTo100LeaderboardModel[i]);
-        } else if (this.raceTo100LeaderboardModel[i].league.includes("HC") && this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
-          this.hardcoreSsf.push(this.raceTo100LeaderboardModel[i]);
-        } else if (!this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
-          this.softcore.push(this.raceTo100LeaderboardModel[i]);
-        } else if (this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
-          this.softcoreSsf.push(this.raceTo100LeaderboardModel[i]);
+  ngOnInit() {
+    this.subscription = this.activatedRoute.params.subscribe(params => {
+      this.league = params['league']; // (+) converts string 'id' to a number
+      console.log("ngOnInit() league : " + this.league);
+
+      this.raceTo100LeaderboardModel = new Array<RaceTo100LeaderboardModel>();
+      this.softcore = new Array<RaceTo100LeaderboardModel>();
+      this.hardcore = new Array<RaceTo100LeaderboardModel>();
+      this.softcoreSsf = new Array<RaceTo100LeaderboardModel>();
+      this.hardcoreSsf = new Array<RaceTo100LeaderboardModel>();
+
+      // In a real app: dispatch action to load the details here.
+      this.subscription = this.leaderboardService.getRaceTo100Leaderboards(this.league).subscribe(response => {
+        this.raceTo100LeaderboardModel = response.map(item => {
+          return new RaceTo100LeaderboardModel(
+            item.rank,
+            item.character,
+            item.ascendancy,
+            item.level,
+            item.league,
+            item.leaderboard
+          );
+        });
+
+        for (var i = 0; i < this.raceTo100LeaderboardModel.length; i++) {
+          if (
+            this.raceTo100LeaderboardModel[i].league.includes("HC") && !this.raceTo100LeaderboardModel[i].league.includes("SSF") || this.raceTo100LeaderboardModel[i].league.includes("Hardcore") && !this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
+            this.hardcore.push(this.raceTo100LeaderboardModel[i]);
+          } else if (this.raceTo100LeaderboardModel[i].league.includes("HC") && this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
+            this.hardcoreSsf.push(this.raceTo100LeaderboardModel[i]);
+          } else if (!this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
+            this.softcore.push(this.raceTo100LeaderboardModel[i]);
+          } else if (this.raceTo100LeaderboardModel[i].league.includes("SSF")) {
+            this.softcoreSsf.push(this.raceTo100LeaderboardModel[i]);
+          }
         }
-      }
+      });
     });
   }
 
-  ngOnInit() {}
 
-  ngAfterViewInit() {
-    $('datatable').DataTable({
-      // bPaginate: false,
-      // bLengthChange: true,
-      // bFilter: false,
-      // bInfo: false,
-      // bAutoWidth: false,
-      // searching: false
-    });
-  }
-
-// tslint:disable-next-line: use-life-cycle-interface
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
 }

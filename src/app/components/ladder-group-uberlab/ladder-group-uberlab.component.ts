@@ -1,7 +1,9 @@
+import { LeagueNameModel } from './../../models/LeagueNameModel';
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { UberlabLeaderboardModel } from "../../models/UberlabLeaderboardModel";
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Subject } from 'rxjs';
+import { Router, ActivatedRoute } from '@angular/router';
 
 declare var $;
 
@@ -19,13 +21,14 @@ export class LadderGroupUberlabComponent implements OnInit {
   hardcore = new Array<UberlabLeaderboardModel>();
   softcoreSsf = new Array<UberlabLeaderboardModel>();
   hardcoreSsf = new Array<UberlabLeaderboardModel>();
-  leagueName: string;
+  league: string;
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(leaderboardService: LeaderboardService) {
-    this.subscription = leaderboardService.getUberlabLeaderboards().subscribe(response => {
+  constructor(private leaderboardService: LeaderboardService, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.league = activatedRoute.snapshot.paramMap.get('league');
+    this.subscription = leaderboardService.getUberlabLeaderboards(this.league).subscribe(response => {
       this.uberlabLeaderboardModel = response.map(item => {
         return new UberlabLeaderboardModel(
           item.rank,
@@ -62,7 +65,6 @@ export class LadderGroupUberlabComponent implements OnInit {
           this.softcoreSsf.push(this.uberlabLeaderboardModel[i]);
         }
       }
-      this.leagueName = this.uberlabLeaderboardModel[0].league;
     });
   }
 
