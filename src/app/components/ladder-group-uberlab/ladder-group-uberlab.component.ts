@@ -1,4 +1,3 @@
-import { LeagueNameModel } from './../../models/LeagueNameModel';
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { UberlabLeaderboardModel } from "../../models/UberlabLeaderboardModel";
 import { Component, OnInit, ViewChild } from "@angular/core";
@@ -13,76 +12,80 @@ declare var $;
   styleUrls: ['./ladder-group-uberlab.component.css']
 })
 export class LadderGroupUberlabComponent implements OnInit {
-
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
   subscription: any;
+  league: string;
 
-  uberlabLeaderboardModel = new Array<UberlabLeaderboardModel>();
+  uberlabLeaderboard = new Array<UberlabLeaderboardModel>();
   softcore = new Array<UberlabLeaderboardModel>();
   hardcore = new Array<UberlabLeaderboardModel>();
   softcoreSsf = new Array<UberlabLeaderboardModel>();
   hardcoreSsf = new Array<UberlabLeaderboardModel>();
-  league: string;
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private leaderboardService: LeaderboardService, private router: Router, private activatedRoute: ActivatedRoute) {
-    this.league = activatedRoute.snapshot.paramMap.get('league');
-    this.subscription = leaderboardService.getUberlabLeaderboards(this.league).subscribe(response => {
-      this.uberlabLeaderboardModel = response.map(item => {
-        return new UberlabLeaderboardModel(
-          item.rank,
-          item.character,
-          item.ascendancy,
-          item.time,
-          item.league,
-          item.leaderboard
-        );
-      });
+  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute, private router: Router) {
+  }
 
-      // for (var i = 0; i < this.uberlabLeaderboardModel.length; i++) {
-      //   if (
-      //     this.uberlabLeaderboardModel[i].league.includes("Hardcore") && !this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-      //     this.hardcore.push(this.uberlabLeaderboardModel[i]);
-      //   } else if (this.uberlabLeaderboardModel[i].league.includes("HC") && this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-      //     this.hardcoreSsf.push(this.uberlabLeaderboardModel[i]);
-      //   } else if (!this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-      //     this.softcore.push(this.uberlabLeaderboardModel[i]);
-      //   } else if (this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-      //     this.softcoreSsf.push(this.uberlabLeaderboardModel[i]);
-      //   }
-      // }
+  ngOnInit() {
+    this.subscription = this.activatedRoute.params.subscribe(params => {
+      this.league = params['league']; // (+) converts string 'id' to a number
+      console.log("ngOnInit() league : " + this.league);
 
-      for (var i = 0; i < this.uberlabLeaderboardModel.length; i++) {
-        if (
-          this.uberlabLeaderboardModel[i].league.includes("HC") && !this.uberlabLeaderboardModel[i].league.includes("SSF") || this.uberlabLeaderboardModel[i].league.includes("Hardcore") && !this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-          this.hardcore.push(this.uberlabLeaderboardModel[i]);
-        } else if (this.uberlabLeaderboardModel[i].league.includes("HC") && this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-          this.hardcoreSsf.push(this.uberlabLeaderboardModel[i]);
-        } else if (!this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-          this.softcore.push(this.uberlabLeaderboardModel[i]);
-        } else if (this.uberlabLeaderboardModel[i].league.includes("SSF")) {
-          this.softcoreSsf.push(this.uberlabLeaderboardModel[i]);
+      this.uberlabLeaderboard = new Array<UberlabLeaderboardModel>();
+      this.softcore = new Array<UberlabLeaderboardModel>();
+      this.hardcore = new Array<UberlabLeaderboardModel>();
+      this.softcoreSsf = new Array<UberlabLeaderboardModel>();
+      this.hardcoreSsf = new Array<UberlabLeaderboardModel>();
+
+      this.subscription = this.leaderboardService.getUberlabLeaderboards(this.league).subscribe(response => {
+        this.uberlabLeaderboard = response.map(item => {
+          return new UberlabLeaderboardModel(
+            item.rank,
+            item.character,
+            item.ascendancy,
+            item.time,
+            item.league,
+            item.leaderboard
+          );
+        });
+
+        console.log("uberlabLeaderboard : number of results returned : " + this.uberlabLeaderboard.length)
+        for (var i = 0; i < this.uberlabLeaderboard.length; i++) {
+          if (this.uberlabLeaderboard[i].league.includes("HC") && !this.uberlabLeaderboard[i].league.includes("SSF") || this.uberlabLeaderboard[i].league.includes("Hardcore") && !this.uberlabLeaderboard[i].league.includes("SSF")) {
+            this.hardcore.push(this.uberlabLeaderboard[i]);
+          } else if (this.uberlabLeaderboard[i].league.includes("HC") && this.uberlabLeaderboard[i].league.includes("SSF") || this.uberlabLeaderboard[i].league.includes("Hardcore") && this.uberlabLeaderboard[i].league.includes("SSF")) {
+            this.hardcoreSsf.push(this.uberlabLeaderboard[i]);
+          } else if (!this.uberlabLeaderboard[i].league.includes("SSF") || this.uberlabLeaderboard[i].league.includes("Standard") && !this.uberlabLeaderboard[i].league.includes("SSF")) {
+            this.softcore.push(this.uberlabLeaderboard[i]);
+          } else if (this.uberlabLeaderboard[i].league.includes("SSF")) {
+            this.softcoreSsf.push(this.uberlabLeaderboard[i]);
+          }
         }
-      }
+
     });
+  });
+
+  }
+  onClick(league: string, leaderboard: string) {
+    this.router.navigate(['/top-100/delve/', league]);
+    const theLeague = league.replace(/ /g, '').toLowerCase();
+    const theLeaderboard= leaderboard.replace(/ /g, '').toLowerCase();
+    console.log('/top-100/'+ theLeaderboard +'/'+ theLeague);
   }
 
-  ngOnInit() {}
-
-  ngAfterViewInit() {
-    $('datatable').DataTable({
-      bPaginate: false,
-      bLengthChange: true,
-      bFilter: false,
-      bInfo: false,
-      bAutoWidth: false,
-      searching: false
-    });
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  // ngAfterViewInit() {
+  //     $('datatable').DataTable({
+  //     bPaginate: false,
+  //     bLengthChange: true,
+  //     bFilter: false,
+  //     bInfo: false,
+  //     bAutoWidth: false,
+  //     searching: false
+  //   });
+  // }
 
 }
