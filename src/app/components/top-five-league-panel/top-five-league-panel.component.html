@@ -14,8 +14,8 @@
         <div class="row">
 
           <div class="radio mx-auto">
-            <label class="radio-inline " *ngFor="let entry of leagueNames">
-              <input type="radio" name="optradio" checked [(ngModel)]="selectedLeague" [value]="entry">
+            <label class="radio-inline" *ngFor="let entry of leagueNames">
+              <input type="radio" class="active" name="optradio" checked [(ngModel)]="selectedLeague" [value]="entry">
               {{entry.leagueName}}
             </label>
           </div>
