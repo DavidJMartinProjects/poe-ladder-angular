@@ -49,7 +49,7 @@ export class LeaderboardService{
       url = 'http://localhost:8080/leaderboard-columns-delve';
     } else if(league.includes("UberLab")){
       url = 'http://localhost:8080/leaderboard-columns-uberlab';
-    } else if(league.includes("Race")){
+    } else {
       url = 'http://localhost:8080/leaderboard-columns-raceto100';
     }
     console.log("getLeaderboardTableColumns() url : " + url);
@@ -57,7 +57,7 @@ export class LeaderboardService{
   }
 
   public getCustomLeagueLeaderboard(customLeagueName: string): Observable<LeaderboardModel[]> {
-    const url = 'http://localhost:8080/leaderboards/custom?leagueName='+customLeagueName;
+    const url = 'http://localhost:8080/custom-league?leagueName='+customLeagueName;
     console.log("service.getCustomLeagueLeaderboard() url call to : " + url);
     return this.http.get<LeaderboardModel[]>(url);
   }

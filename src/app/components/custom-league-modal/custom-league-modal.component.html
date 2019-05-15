@@ -1,14 +1,14 @@
 <ng-template #content let-modal>
   <div class="custom-modal">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Custom League Ladder</h4>
+    <h4 class="modal-title" id="modal-basic-title">Create Private League Ladder</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
       <div class="form-group">
-        <label for="custom-league-name">Enter Custom League Name</label>
+        <label for="custom-league-name">Enter Private League Name</label>
           <div class="input-group">
             <input [(ngModel)]="leagueName" id="custom-league-name" ngbAutofocus type="text" class="form-control"/>
         </div>
@@ -21,6 +21,6 @@
 </ng-template>
 
 <button class="btn text-body btn-info mx-auto" (click)="open(content)" id="create-custom-league-btn">
-  Custom League Ladder
+  Create Private League Ladder
 </button>
 

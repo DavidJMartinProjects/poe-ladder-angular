@@ -16,14 +16,8 @@ export class Top100leaderboardComponent implements OnInit {
   tableColumnSubscription: any;
   delveLeaderboard = new Array<LeaderboardModel>();
   tableColumns = new Array<TableColumnModel>();
-
-  dtOptions: DataTables.Settings = {
-    searching: true, // Search Box will Be Disabled
-    ordering: true, // Ordering (Sorting on Each Column)will Be Disabled
-    info: false, // Will show "1 to n of n entries" Text at bottom
-    lengthChange: false, // Will Disabled Record number per page
-    paging: false
-  };
+  displayTable: boolean = false;
+  dtOptions: any;
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -33,7 +27,7 @@ export class Top100leaderboardComponent implements OnInit {
     this.leaderboard = activatedRoute.snapshot.paramMap.get("leaderboard");
     console.log("league : " + this.league);
     console.log("leaderboard : " + this.leaderboard);
-    
+
     this.subscription = leaderboardService
       .getLeaderboardLadder(this.league, this.leaderboard)
       .subscribe(response => {
@@ -50,6 +44,14 @@ export class Top100leaderboardComponent implements OnInit {
             item.time
           );
         });
+        this.displayTable = true;
+        this.dtOptions = {
+          searching: true, // Search Box will Be Disabled
+          ordering: true, // Ordering (Sorting on Each Column)will Be Disabled
+          info: false, // Will show "1 to n of n entries" Text at bottom
+          lengthChange: false, // Will Disabled Record number per page
+          paging: false
+        };
       });
 
     this.tableColumnSubscription = leaderboardService

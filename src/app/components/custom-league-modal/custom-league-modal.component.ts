@@ -1,30 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {NgForm} from '@angular/forms';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-custom-league-modal',
-  templateUrl: './custom-league-modal.component.html',
-  styleUrls: ['./custom-league-modal.component.css']
+  selector: "app-custom-league-modal",
+  templateUrl: "./custom-league-modal.component.html",
+  styleUrls: ["./custom-league-modal.component.css"]
 })
-
 export class CustomLeagueModalComponent implements OnInit {
   leagueName: string;
-  ngOnInit(){
-  }
+  ngOnInit() {}
 
   closeResult: string;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private router: Router) {}
 
   open(content) {
     this.modalService.open(content);
   }
 
   getCustomLeague(leagueName: string) {
-    console.log("++++++++++"+leagueName+"+++++++++");
-    this.modalService.dismissAll();
+    if (leagueName != null || leagueName != "null") {
+      console.log("++++++++++" + leagueName + "+++++++++");
+      this.router.navigate(["/custom-league/", leagueName]);
+      console.log("onClick /custom-league/" + leagueName);
+      this.modalService.dismissAll();
+    }
   }
-
-
 }

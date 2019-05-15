@@ -25,26 +25,12 @@ export class NavbarComponent implements OnInit {
   };
 
   constructor(activatedRoute: ActivatedRoute, leaderboardService: LeaderboardService) {
-    this.leagueName = activatedRoute.snapshot.paramMap.get("leagueName");
-    console.log("custom leagueName : " + this.leagueName);
+    // this.leagueName = activatedRoute.snapshot.paramMap.get("leagueName");
+    // console.log("custom leagueName : " + this.leagueName);
 
-    this.subscription = leaderboardService
-    .getCustomLeagueLeaderboard(this.leagueName)
-    .subscribe(response => {
-      this.leaderboardModels = response.map(item => {
-        return new LeaderboardModel(
-          item.rank,
-          item.account,
-          item.character,
-          item.ascendancy,
-          item.league,
-          item.leaderboard,
-          item.level,
-          item.depth,
-          item.time
-        );
-      });
-    });
+    // this.router.navigate(['/top-100/', league, leaderboard]);
+    // console.log('onClick /top-100/'+ leaderboard +'/'+ league);
+
 
     // this.tableColumnSubscription = leaderboardService
     // .getLeaderboardTableColumns(this.leaderboard)

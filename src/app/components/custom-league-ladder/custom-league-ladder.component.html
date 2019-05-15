@@ -1,3 +1,44 @@
-<p>
-  custom-league-ladder works!
-</p>
+<div class="container-fluid">
+  <!-- <div class="card mx-auto" id="parent-card"> -->
+        <div class="row">
+          <div class="col-md-12">
+              <div *ngIf="displayTable">
+            <div class="card mx-auto">
+              <div class="card-header text-center">
+                  <div class="row">
+                      <div class="col">
+                      </div>
+                      <div class="col-6">
+                          {{leaderboardModels[0].league}}
+                      </div>
+                      <div class="col">
+                      </div>
+                  </div>
+              </div>
+
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+                    <thead>
+                      <tr>
+                        <th *ngFor="let entry of tableColumns">{{entry.column}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let entry of leaderboardModels">
+                        <td>{{entry.rank}}</td>
+                        <td>{{entry.account}}</td>
+                        <td>{{entry.character}}</td>
+                        <td>{{entry.ascendancy}}</td>
+                        <td>{{entry.depth}} {{entry.level}} {{entry.time}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
