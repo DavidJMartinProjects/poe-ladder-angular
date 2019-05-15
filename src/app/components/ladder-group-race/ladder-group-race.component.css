@@ -14,6 +14,10 @@
   width: 70%;
 }
 
+#Top5LadderTitle {
+  border-radius: 0.75rem;
+}
+
 .col-md-12 {
   padding: 1em;
 }

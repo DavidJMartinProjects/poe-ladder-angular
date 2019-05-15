@@ -1,7 +1,7 @@
 .card {
     margin-top: 1em;
     width: 100%;
-    flex-direction: column;
+
     min-width: 0;
     word-wrap: break-word;
     background-color: rgba(51, 51, 51, 0.5);
@@ -9,6 +9,10 @@
     border: 1px solid #1C2F35;
     border-radius: 0.75rem;
 
+}
+
+#Top5LadderTitle {
+  border-radius: 0.75rem;
 }
 
 .container-fluid {
@@ -44,3 +48,8 @@ thead {
   margin-right: 12%;
   height: 100%;
 }
+
+/* .row {
+  border: white solid 1px;
+} */
+

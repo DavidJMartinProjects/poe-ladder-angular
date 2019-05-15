@@ -1,6 +1,6 @@
 .card {
   margin-top: 1em;
-  width: 40%;
+  width: 100%;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
