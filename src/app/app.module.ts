@@ -13,21 +13,23 @@ import { DataTablesModule } from 'angular-datatables';
 import { Top100leaderboardComponent } from './components/top100leaderboard/top100leaderboard.component';
 import { SelectLeagueButtonsComponent } from './components/select-league-buttons/select-league-buttons.component';
 import { FormsModule } from '@angular/forms';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { CustomLeagueModalComponent } from './components/custom-league-modal/custom-league-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     TopFiveLeaguePanelComponent,
-    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent, SelectLeagueButtonsComponent
+    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent, SelectLeagueButtonsComponent, CustomLeagueModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     DataTablesModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
 

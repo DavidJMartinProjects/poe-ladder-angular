@@ -1,6 +1,5 @@
 .navbar {
   background-color: black;
-  padding: .5em;
 }
 
 .btn {
@@ -27,8 +26,8 @@
   "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.logo {
-  height: 12%;
-  width: 12%;
+#createCustomLeagueBtn {
+  vertical-align:center;
 }
+
 
