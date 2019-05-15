@@ -5,16 +5,17 @@ import { LeaderboardService } from "./../../services/leaderboard-service.service
 import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
 
 @Component({
-  selector: "app-top100leaderboard",
-  templateUrl: "./top100leaderboard.component.html",
-  styleUrls: ["./top100leaderboard.component.css"]
+  selector: 'app-custom-league-ladder',
+  templateUrl: './custom-league-ladder.component.html',
+  styleUrls: ['./custom-league-ladder.component.css']
 })
-export class Top100leaderboardComponent implements OnInit {
+export class CustomLeagueLadderComponent {
+
   league: string;
   leaderboard: string;
   subscription: any;
   tableColumnSubscription: any;
-  delveLeaderboard = new Array<LeaderboardModel>();
+  leaderboardModels = new Array<LeaderboardModel>();
   tableColumns = new Array<TableColumnModel>();
 
   dtOptions: DataTables.Settings = {
@@ -33,11 +34,11 @@ export class Top100leaderboardComponent implements OnInit {
     this.leaderboard = activatedRoute.snapshot.paramMap.get("leaderboard");
     console.log("league : " + this.league);
     console.log("leaderboard : " + this.leaderboard);
-    
+
     this.subscription = leaderboardService
       .getLeaderboardLadder(this.league, this.leaderboard)
       .subscribe(response => {
-        this.delveLeaderboard = response.map(item => {
+        this.leaderboardModels = response.map(item => {
           return new LeaderboardModel(
             item.rank,
             item.account,
@@ -62,8 +63,5 @@ export class Top100leaderboardComponent implements OnInit {
       });
     });
 
-  }
-
-  ngOnInit() {
   }
 }

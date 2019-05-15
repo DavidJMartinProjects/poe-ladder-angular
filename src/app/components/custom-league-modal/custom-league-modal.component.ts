@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-custom-league-modal',
@@ -8,6 +9,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class CustomLeagueModalComponent implements OnInit {
+  leagueName: string;
   ngOnInit(){
   }
 
@@ -17,6 +19,11 @@ export class CustomLeagueModalComponent implements OnInit {
 
   open(content) {
     this.modalService.open(content);
+  }
+
+  getCustomLeague(leagueName: string) {
+    console.log("++++++++++"+leagueName+"+++++++++");
+    this.modalService.dismissAll();
   }
 
 

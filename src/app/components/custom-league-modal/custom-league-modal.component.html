@@ -7,17 +7,15 @@
     </button>
   </div>
   <div class="modal-body">
-    <form>
       <div class="form-group">
         <label for="custom-league-name">Enter Custom League Name</label>
-          <div class="input-group">         
-            <input id="custom-league-name" ngbAutofocus type="text" class="form-control" [(ngModel)]="model"n name="model"/>
+          <div class="input-group">
+            <input [(ngModel)]="leagueName" id="custom-league-name" ngbAutofocus type="text" class="form-control"/>
         </div>
       </div>
-    </form>
   </div>
   <div class="modal-footer">
-    <button id="create-league-modal-button" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Create Ladder</button>    
+    <button id="create-league-modal-button" type="submit" class="btn btn-outline-dark" (click)="getCustomLeague(leagueName)">Create Ladder</button>
   </div>
 </div>
 </ng-template>

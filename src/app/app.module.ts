@@ -15,13 +15,14 @@ import { SelectLeagueButtonsComponent } from './components/select-league-buttons
 import { FormsModule } from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CustomLeagueModalComponent } from './components/custom-league-modal/custom-league-modal.component';
+import { CustomLeagueLadderComponent } from './components/custom-league-ladder/custom-league-ladder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     TopFiveLeaguePanelComponent,
-    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent, SelectLeagueButtonsComponent, CustomLeagueModalComponent
+    routingComponents, LadderGroupDelveComponent, LadderGroupRaceComponent, LadderGroupUberlabComponent, Top100leaderboardComponent, SelectLeagueButtonsComponent, CustomLeagueModalComponent, CustomLeagueLadderComponent
   ],
   imports: [
     BrowserModule,

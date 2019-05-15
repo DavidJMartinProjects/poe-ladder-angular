@@ -56,4 +56,10 @@ export class LeaderboardService{
     return this.http.get<TableColumnModel[]>(url);
   }
 
+  public getCustomLeagueLeaderboard(customLeagueName: string): Observable<LeaderboardModel[]> {
+    const url = 'http://localhost:8080/leaderboards/custom?leagueName='+customLeagueName;
+    console.log("service.getCustomLeagueLeaderboard() url call to : " + url);
+    return this.http.get<LeaderboardModel[]>(url);
+  }
+
 }
