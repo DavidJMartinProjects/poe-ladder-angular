@@ -1,37 +1,48 @@
 <div class="container-fluid">
-<div class="card">
-    <div class="card-body">
+  <div class="row justify-content-center">
+      <div class="col-md-5">
+    <div class="card mx-auto">
+      <div class="card-header text-center">
+        <div class="row justify-content-center">
+          <div class="col">
+            Select Leaderboard
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
 
         <div class="row">
-            <div class="radio mx-auto" >
-                <label class="radio-inline " *ngFor="let entry of leagueNames">
-                  <input type="radio" name="optradio" checked [(ngModel)]="selectedLeague" [value] = "entry">   {{entry.leagueName}}
-                </label>
-              </div>
+
+          <div class="radio mx-auto">
+            <label class="radio-inline " *ngFor="let entry of leagueNames">
+              <input type="radio" name="optradio" checked [(ngModel)]="selectedLeague" [value]="entry">
+              {{entry.leagueName}}
+            </label>
+          </div>
         </div>
-          <div class="row">
-              <div class="col-sm">
-              </div>
-              <div class="col-sm">
-                  <div class="row">
-                    <!-- Default dropright button -->
-                    <div class="btn-group dropright mx-auto">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Leaderboards
-                        </button>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" (click)="onClickRace(selectedLeague.leagueName)" >Race to 100</a>
-                          <a class="dropdown-item" (click)="onClickDelve(selectedLeague.leagueName)" >Delve Depths</a>
-                          <a class="dropdown-item" (click)="onClickUberlab(selectedLeague.leagueName)" >Uber Lab Times</a>
-                        </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="col-sm">
-              </div>
+        <div class="row">
+          <!-- Default dropright button -->
+          <div class="btn-group dropright mx-auto">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false" id="toggle">
+              Leaderboards
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="onClickRace(selectedLeague.leagueName)">Race to 100</a>
+              <a class="dropdown-item" (click)="onClickDelve(selectedLeague.leagueName)">Delve Depths</a>
+              <a class="dropdown-item" (click)="onClickUberlab(selectedLeague.leagueName)">Uber Lab Times</a>
+            </div>
+
           </div>
-          </div>
-       </div>
-       <div class="col-sm">
-       </div>
+
+        </div>
+
+
+
+      </div>
     </div>
+  </div>
+  </div>
+
+
+</div>
