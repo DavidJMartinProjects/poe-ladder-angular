@@ -1,9 +1,7 @@
-
-
-
 <ng-template #content let-modal>
+  <div class="custom-modal">
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Custom League Ladder</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -11,22 +9,20 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
-          </div>
+        <label for="custom-league-name">Enter Custom League Name</label>
+          <div class="input-group">         
+            <input id="custom-league-name" ngbAutofocus type="text" class="form-control" [(ngModel)]="model"n name="model"/>
         </div>
       </div>
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    <button id="create-league-modal-button" type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Create Ladder</button>    
   </div>
+</div>
 </ng-template>
 
-<button class="btn text-body btn-info mx-auto" (click)="open(content)" aria-expanded="false" id="createCustomLeagueBtn">
+<button class="btn text-body btn-info mx-auto" (click)="open(content)" id="create-custom-league-btn">
   Custom League Ladder
 </button>
 

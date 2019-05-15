@@ -17,7 +17,6 @@
 
 .border-info {
   border-color: #1C2F35!important;
-
 }
 
 #logo-text {
@@ -26,8 +25,23 @@
   "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-#createCustomLeagueBtn {
-  vertical-align:center;
+#close-modal-button {
+  color: white;
 }
 
+#create-league-modal-button {
+  color: white;
+}
 
+.custom-modal {
+  background-color: #292b2c;
+  color: white;
+  position: fixed;
+  top: 18%;
+  width: 500px;
+  overflow: hidden;
+}
+
+.close {
+  color: white;
+}
