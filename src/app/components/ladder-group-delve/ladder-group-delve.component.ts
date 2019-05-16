@@ -52,7 +52,9 @@ export class LadderGroupDelveComponent implements OnInit, OnDestroy {
             item.leaderboard,
             item.level,
             item.depth,
-            item.time
+            item.time,
+            item.experience,
+            item.progress
           );
         });
 

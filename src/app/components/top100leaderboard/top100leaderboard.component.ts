@@ -41,7 +41,9 @@ export class Top100leaderboardComponent implements OnInit {
             item.leaderboard,
             item.level,
             item.depth,
-            item.time
+            item.time,
+            item.experience,
+            item.progress
           );
         });
         this.displayTable = true;
