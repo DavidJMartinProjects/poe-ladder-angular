@@ -54,7 +54,9 @@ export class LadderGroupUberlabComponent implements OnInit {
             item.depth,
             item.time,
             item.experience,
-            item.progress
+            item.progress,
+            item.online,
+            item.dead
           );
         });
 

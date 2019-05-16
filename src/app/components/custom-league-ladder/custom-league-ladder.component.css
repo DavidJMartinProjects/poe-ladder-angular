@@ -122,3 +122,7 @@ th {
   border: 1px solid #111!important;
   border-bottom:  1px solid #111!important;
 }
+
+.online-icon {
+  height: 80%;
+}

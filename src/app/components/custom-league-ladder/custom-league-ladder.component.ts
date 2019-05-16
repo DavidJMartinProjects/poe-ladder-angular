@@ -11,7 +11,7 @@ declare var $;
   templateUrl: './custom-league-ladder.component.html',
   styleUrls: ['./custom-league-ladder.component.css']
 })
-export class CustomLeagueLadderComponent {
+export class CustomLeagueLadderComponent{
 
   league: string;
   leaderboard: string;
@@ -20,6 +20,7 @@ export class CustomLeagueLadderComponent {
   leaderboardModels = new Array<LeaderboardModel>();
   tableColumns = new Array<TableColumnModel>();
   displayTable: boolean = false;
+  leaderboardService: LeaderboardService;
 
   dtOptions: DataTables.Settings = {
     searching: true, // Search Box will Be Disabled
@@ -52,7 +53,9 @@ export class CustomLeagueLadderComponent {
             item.depth,
             item.time,
             item.experience,
-            item.progress
+            item.progress,
+            item.online,
+            item.dead
           );
         });
         this.displayTable = true;
@@ -65,7 +68,10 @@ export class CustomLeagueLadderComponent {
         };
       });
 
-    this.tableColumnSubscription = leaderboardService
+  }
+
+  ngOnInit() {
+    this.tableColumnSubscription = this.leaderboardService
     .getLeaderboardTableColumns("Race")
     .subscribe(response => {
       this.tableColumns = response.map(item => {
@@ -74,9 +80,6 @@ export class CustomLeagueLadderComponent {
         );
       });
     });
-
-
-
 
     $('datatable').DataTable();
   }

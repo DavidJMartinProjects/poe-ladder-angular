@@ -54,7 +54,9 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
             item.depth,
             item.time,
             item.experience,
-            item.progress
+            item.progress,
+            item.online,
+            item.dead
           );
         });
 

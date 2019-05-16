@@ -11,8 +11,10 @@ export class LeaderboardModel {
   public time: string;
   public experience: string;
   public progress: string;
+  public online: string;
+  public dead: string;
 
-  constructor(rank:string, account:string, character:string, ascendancy:string, league:string, leaderboard:string, level:string, depth:string, time:string, experience:string, progress: string) {
+  constructor(rank:string, account:string, character:string, ascendancy:string, league:string, leaderboard:string, level:string, depth:string, time:string, experience:string, progress: string, online: string, dead: string) {
     this.rank = rank;
     this.account = account;
     this.character = character;
@@ -24,6 +26,8 @@ export class LeaderboardModel {
     this.time = time;
     this.experience = experience;
     this.progress = progress;
+    this.online = online;
+    this.dead = dead;
   }
 
 }

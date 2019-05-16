@@ -23,21 +23,22 @@
                   <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Account</th>
-                        <th>Character</th>
-                        <th>Ascendancy</th>
-                        <th>Level</th>
-                        <th>Level Progress</th>
-                        <th>Experience</th>
+                        <th>&nbsp;#</th>
+                        <th>&nbsp;Account</th>
+                        <th>&nbsp;Character</th>
+                        <th></th>
+                        <th>&nbsp;Ascendancy</th>
+                        <th>&nbsp;Level</th>
+                        <th>&nbsp;Level Progress</th>
+                        <th>&nbsp;Experience</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let entry of leaderboardModels">
-
                         <td>{{entry.rank}}</td>
-                        <td>{{entry.account}}</td>
+                        <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{entry.account}}</td>
                         <td>{{entry.character}}</td>
+                        <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
                         <td>{{entry.ascendancy}}</td>
                         <td>{{entry.level}}</td>
                         <td>
