@@ -16,6 +16,7 @@ declare var $;
 export class CustomLeagueLadderComponent implements OnDestroy{
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    this.interval = null;
   }
 
   league: string;
