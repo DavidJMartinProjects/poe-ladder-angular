@@ -1,6 +1,6 @@
 import { TableColumnModel } from './../../models/TableColumnModel';
 import { ActivatedRoute } from "@angular/router";
-import { Component, OnInit } from "@angular/core";
+import { Component, ChangeDetectorRef, OnDestroy} from "@angular/core";
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
 
@@ -10,8 +10,13 @@ declare var $;
   selector: 'app-custom-league-ladder',
   templateUrl: './custom-league-ladder.component.html',
   styleUrls: ['./custom-league-ladder.component.css']
+
 })
-export class CustomLeagueLadderComponent{
+
+export class CustomLeagueLadderComponent implements OnDestroy{
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
+  }
 
   league: string;
   leaderboard: string;
@@ -21,69 +26,105 @@ export class CustomLeagueLadderComponent{
   tableColumns = new Array<TableColumnModel>();
   displayTable: boolean = false;
   leaderboardService: LeaderboardService;
+  interval:any;
+  changeDetectorRef: ChangeDetectorRef;
+  count = 1;
+  now = new Date();
 
   dtOptions: DataTables.Settings = {
-    searching: true, // Search Box will Be Disabled
-    ordering: true, // Ordering (Sorting on Each Column)will Be Disabled
-    info: false, // Will show "1 to n of n entries" Text at bottom
-    lengthChange: false, // Will Disabled Record number per page
-    paging: false
   };
 
   constructor(
     activatedRoute: ActivatedRoute,
-    leaderboardService: LeaderboardService
+    leaderboardService: LeaderboardService,
+    changeDetectorRef: ChangeDetectorRef
   ) {
     this.league = activatedRoute.snapshot.paramMap.get("leagueName");
-
     console.log("leagueName : " + this.league);
-
-    this.subscription = leaderboardService
-      .getCustomLeagueLeaderboard(this.league)
-      .subscribe(response => {
-        this.leaderboardModels = response.map(item => {
-          return new LeaderboardModel(
-            item.rank,
-            item.account,
-            item.character,
-            item.ascendancy,
-            item.league,
-            item.leaderboard,
-            item.level,
-            item.depth,
-            item.time,
-            item.experience,
-            item.progress,
-            item.online,
-            item.dead
-          );
-        });
-        this.displayTable = true;
-        this.dtOptions = {
-          searching: true, // Search Box will Be Disabled
-          ordering: true, // Ordering (Sorting on Each Column)will Be Disabled
-          info: false, // Will show "1 to n of n entries" Text at bottom
-          lengthChange: false, // Will Disabled Record number per page
-          paging: false
-        };
-      });
-
+    this.leaderboardService = leaderboardService;
+    this.changeDetectorRef = changeDetectorRef;
   }
 
   ngOnInit() {
-    this.tableColumnSubscription = this.leaderboardService
-    .getLeaderboardTableColumns("Race")
+    // this.tableColumnSubscription = this.leaderboardService
+    // .getLeaderboardTableColumns("Race")
+    // .subscribe(response => {
+    //   this.tableColumns = response.map(item => {
+    //     return new TableColumnModel(
+    //       item.column
+    //     );
+    //   });
+    // });
+
+    this.subscription = this.leaderboardService
+    .getCustomLeagueLeaderboard(this.league)
     .subscribe(response => {
-      this.tableColumns = response.map(item => {
-        return new TableColumnModel(
-          item.column
+      this.leaderboardModels = response.map(item => {
+        return new LeaderboardModel(
+          item.rank,
+          item.account,
+          item.character,
+          item.ascendancy,
+          item.league,
+          item.leaderboard,
+          item.level,
+          item.depth,
+          item.time,
+          item.experience,
+          item.progress,
+          item.online,
+          item.dead
         );
       });
+
     });
 
-    $('datatable').DataTable();
+    this.refreshData();
+    this.interval = setInterval(() => {
+        this.refreshData();
+    }, 10000);
   }
 
+  refreshData(){
+    this.now = new Date();
+    console.log("refreshData() called@ : "+this.now);
+    this.subscription = this.leaderboardService
+    .getCustomLeagueLeaderboard(this.league)
+    .subscribe(response => {
+      this.leaderboardModels = response.map(item => {
+        return new LeaderboardModel(
+          item.rank+(this.count++),
+          item.account,
+          item.character,
+          item.ascendancy,
+          item.league,
+          item.leaderboard,
+          item.level,
+          item.depth,
+          item.time,
+          item.experience,
+          item.progress,
+          item.online,
+          item.dead
+        );
+      });
+      this.changeDetectorRef.detectChanges();
+
+      this.displayTable = true;
+      this.dtOptions = {
+        searching: true, // Search Box will Be Disabled
+        ordering: true, // Ordering (Sorting on Each Column)will Be Disabled
+        info: false, // Will show "1 to n of n entries" Text at bottom
+        lengthChange: false, // Will Disabled Record number per page
+        paging: false,
+        columnDefs: [ {
+          targets: 3,
+          orderable: false
+          } ]
+      };
+
+    });
+  }
 
 }
 
