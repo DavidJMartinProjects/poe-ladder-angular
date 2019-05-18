@@ -77,8 +77,8 @@ export class LadderGroupUberlabComponent implements OnInit {
   }
 
   onClick(league: string, leaderboard: string) {
-    this.router.navigate(['/top-100/', league, leaderboard]);
-    console.log('onClick /top-100/'+ leaderboard +'/'+ league);
+    this.router.navigate(['ladder/top-100/', league, leaderboard]);
+    console.log('onClick ladder/top-100/'+ leaderboard +'/'+ league);
   }
 
 }

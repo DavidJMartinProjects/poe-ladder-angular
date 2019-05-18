@@ -76,7 +76,7 @@ export class LadderGroupDelveComponent implements OnInit, OnDestroy {
 
   }
   onClick(league: string, leaderboard: string) {
-    this.router.navigate(['/top-100/', league, leaderboard]);
+    this.router.navigate(['ladder/top-100/', league, leaderboard]);
     console.log('onClick /top-100/'+ leaderboard +'/'+ league);
   }
 

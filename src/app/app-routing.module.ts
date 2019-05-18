@@ -8,12 +8,16 @@ import { Top100leaderboardComponent } from './components/top100leaderboard/top10
 import { TopFiveLeaguePanelComponent } from './components/top-five-league-panel/top-five-league-panel.component';
 
 const routes: Routes = [
-  {path: 'leaderboard-top-5-delve/:league', component: LadderGroupDelveComponent},
-  {path: 'leaderboard-top-5-race/:league', component: LadderGroupRaceComponent},
-  {path: 'leaderboard-top-5-uberlab/:league', component: LadderGroupUberlabComponent},
-  {path: 'top-100/:league/:leaderboard', component: Top100leaderboardComponent},
+
+
   {path: 'custom-league/:leagueName', component: CustomLeagueLadderComponent},
-  {path: 'ladder', component: TopFiveLeaguePanelComponent},
+  {path: 'ladder', component: TopFiveLeaguePanelComponent,
+  children:[
+    {path: 'leaderboard-top-5-delve/:league', component: LadderGroupDelveComponent},
+    {path: 'leaderboard-top-5-race/:league', component: LadderGroupRaceComponent},
+    {path: 'leaderboard-top-5-uberlab/:league', component: LadderGroupUberlabComponent},
+    {path: 'top-100/:league/:leaderboard', component: Top100leaderboardComponent}
+  ]},
 ];
 
 @NgModule({

@@ -63,7 +63,7 @@
                 </div>
                 <div class="col">
                   <button type="button" class="btn btn-primary btn-sm float-right"
-                    (click)="onClick(softcore[0].league, softcore[0].leaderboard)">
+                    (click)="onClick(hardcore[0].league, hardcore[0].leaderboard)">
                     Show Top 100
                   </button>
                 </div>
@@ -83,7 +83,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr *ngFor="let entry of softcore">
+                    <tr *ngFor="let entry of hardcore">
                       <td>{{ entry.rank }}</td>
                       <td>{{ entry.account }}</td>
                       <td>{{ entry.character }}</td>

@@ -73,7 +73,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .dataTables_filter label {
-	color: white;
+	color: white!important;
 }
 
 .dataTables_length label {
@@ -82,7 +82,10 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .dataTables_wrapper div.dataTables_filter label {
-
   color: white!important;
 
+}
+
+.dataTables_filter {
+  color: white!important;
 }

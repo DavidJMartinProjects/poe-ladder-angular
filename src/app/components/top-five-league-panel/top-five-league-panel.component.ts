@@ -27,23 +27,22 @@ export class TopFiveLeaguePanelComponent implements OnInit {
         });
         this.radioSelected = this.leagueNames[0].leagueName;
         this.getSelecteditem();
-        this.router.navigate(['/leaderboard-top-5-race/', this.radioSelected]);
+        this.router.navigate(['ladder/leaderboard-top-5-race/', this.radioSelected]);
       });
-
   }
 
   onClickRace(league: string) {
-    this.router.navigate(['/leaderboard-top-5-race/', league]);
+    this.router.navigate(['ladder/leaderboard-top-5-race/', league]);
     console.log('selectedLeague : '+ league);
   }
 
   onClickDelve(league: string) {
-    this.router.navigate(['/leaderboard-top-5-delve/', league]);
+    this.router.navigate(['ladder/leaderboard-top-5-delve/', league]);
     console.log('selectedLeague : '+ league);
   }
 
   onClickUberlab( league: string) {
-    this.router.navigate(['/leaderboard-top-5-uberlab/', league]);
+    this.router.navigate(['ladder/leaderboard-top-5-uberlab/', league]);
     console.log('selectedLeague : '+ league);
   }
 
