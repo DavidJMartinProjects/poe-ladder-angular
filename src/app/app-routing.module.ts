@@ -5,6 +5,7 @@ import { LadderGroupDelveComponent } from './components/ladder-group-delve/ladde
 import { LadderGroupRaceComponent } from './components/ladder-group-race/ladder-group-race.component';
 import { LadderGroupUberlabComponent } from './components/ladder-group-uberlab/ladder-group-uberlab.component';
 import { Top100leaderboardComponent } from './components/top100leaderboard/top100leaderboard.component';
+import { TopFiveLeaguePanelComponent } from './components/top-five-league-panel/top-five-league-panel.component';
 
 const routes: Routes = [
   {path: 'leaderboard-top-5-delve/:league', component: LadderGroupDelveComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'leaderboard-top-5-uberlab/:league', component: LadderGroupUberlabComponent},
   {path: 'top-100/:league/:leaderboard', component: Top100leaderboardComponent},
   {path: 'custom-league/:leagueName', component: CustomLeagueLadderComponent},
+  {path: 'ladder', component: TopFiveLeaguePanelComponent},
 ];
 
 @NgModule({
@@ -26,5 +28,6 @@ export const routingComponents = [
   LadderGroupRaceComponent,
   LadderGroupUberlabComponent,
   Top100leaderboardComponent,
-  CustomLeagueLadderComponent
+  CustomLeagueLadderComponent,
+  TopFiveLeaguePanelComponent
 ];

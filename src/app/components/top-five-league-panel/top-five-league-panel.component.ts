@@ -25,11 +25,11 @@ export class TopFiveLeaguePanelComponent implements OnInit {
         this.leagueNames = response.map(item => {
           return new LeagueNameModel(item.leagueName);
         });
+        this.radioSelected = this.leagueNames[0].leagueName;
+        this.getSelecteditem();
+        this.router.navigate(['/leaderboard-top-5-race/', this.radioSelected]);
       });
-    console.log('leagueNames : ' + this.leagueNames);
-    this.selectedLeague = new LeagueNameModel('Synthesis Event');
-    this.radioSelected = 'Synthesis Event';
-    this.getSelecteditem();
+
   }
 
   onClickRace(league: string) {
