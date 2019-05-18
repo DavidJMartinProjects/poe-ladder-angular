@@ -187,3 +187,10 @@ th {
   color: black!important;
 }
 
+.logo {
+  display:block;
+  margin:auto;
+  width: 37px;
+  height: 29px;
+}
+
