@@ -35,6 +35,7 @@
                   <th>#</th>
                   <th>Account</th>
                   <th>Character</th>
+                  <th></th>
                   <th>Asc</th>
                   <th>Depth</th>
                 </tr>
@@ -42,8 +43,9 @@
               <tbody>
                 <tr *ngFor="let entry of softcore">
                   <td>{{ entry.rank }}</td>
-                  <td>{{ entry.account }}</td>
+                  <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                   <td>{{ entry.character }}</td>
+                  <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
                   <td>{{ entry.ascendancy }}</td>
                   <td>{{ entry.depth }}</td>
                 </tr>
@@ -78,6 +80,7 @@
                     <th>#</th>
                     <th>Account</th>
                     <th>Character</th>
+                    <th></th>
                     <th>Asc</th>
                     <th>Depth</th>
                   </tr>
@@ -85,8 +88,9 @@
                 <tbody>
                   <tr *ngFor="let entry of hardcore">
                     <td>{{ entry.rank }}</td>
-                    <td>{{ entry.account }}</td>
+                    <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                     <td>{{ entry.character }}</td>
+                    <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
                     <td>{{ entry.ascendancy }}</td>
                     <td>{{ entry.depth}}</td>
                   </tr>
@@ -122,6 +126,7 @@
                 <th>#</th>
                 <th>Account</th>
                 <th>Character</th>
+                <th></th>
                 <th>Asc</th>
                 <th>Depth</th>
               </tr>
@@ -129,8 +134,9 @@
             <tbody>
               <tr *ngFor="let entry of softcoreSsf">
                 <td>{{ entry.rank }}</td>
-                <td>{{ entry.account }}</td>
+                <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                 <td>{{ entry.character }}</td>
+                <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
                 <td>{{ entry.ascendancy }}</td>
                 <td>{{ entry.depth }}</td>
               </tr>
@@ -164,6 +170,7 @@
                 <th>#</th>
                 <th>Account</th>
                 <th>Character</th>
+                <th></th>
                 <th>Asc</th>
                 <th>Depth</th>
               </tr>
@@ -171,8 +178,9 @@
             <tbody>
               <tr *ngFor="let entry of hardcoreSsf">
                 <td>{{ entry.rank }}</td>
-                <td>{{ entry.account }}</td>
+                <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                 <td>{{ entry.character }}</td>
+                <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
                 <td>{{ entry.ascendancy }}</td>
                 <td>{{ entry.depth }}</td>
               </tr>
