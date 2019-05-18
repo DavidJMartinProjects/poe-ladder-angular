@@ -18,6 +18,8 @@ export class Top100leaderboardComponent implements OnInit {
   tableColumns = new Array<TableColumnModel>();
   displayTable: boolean = false;
   dtOptions: any;
+  now = new Date();
+  laddertype: string;
 
   constructor(
     activatedRoute: ActivatedRoute,
@@ -25,9 +27,6 @@ export class Top100leaderboardComponent implements OnInit {
   ) {
     this.league = activatedRoute.snapshot.paramMap.get("league");
     this.leaderboard = activatedRoute.snapshot.paramMap.get("leaderboard");
-    console.log("league : " + this.league);
-    console.log("leaderboard : " + this.leaderboard);
-
     this.subscription = leaderboardService
       .getLeaderboardLadder(this.league, this.leaderboard)
       .subscribe(response => {
@@ -48,6 +47,7 @@ export class Top100leaderboardComponent implements OnInit {
             item.dead
           );
         });
+        this.laddertype = this.delveLeaderboard[0].leaderboard;
         this.displayTable = true;
         this.dtOptions = {
           searching: true, // Search Box will Be Disabled
