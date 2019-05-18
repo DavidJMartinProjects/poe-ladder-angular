@@ -16,7 +16,7 @@
 }
 
 .container-fluid {
-  width: 70%;
+  width: 75%;
 }
 
 .col-md-12 {
@@ -80,6 +80,10 @@ border-top-right-radius: 0.75rem;
 background-color: #1C2F35;
 padding: 4px;
 color: white;
+}
+
+.card-body {
+
 }
 
 .btn {
