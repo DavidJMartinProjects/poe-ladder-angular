@@ -10,14 +10,12 @@
         </div>
       </div>
       <div class="card-body">
-
         <div class="row">
-
           <div class="radio mx-auto">
-            <label class="radio-inline" *ngFor="let entry of leagueNames">
-              <input type="radio" class="active" name="optradio" checked [(ngModel)]="selectedLeague" [value]="entry">
-              {{entry.leagueName}}
-            </label>
+                <label class="radio-inline"  *ngFor="let item of leagueNames">
+                  <input type="radio" [(ngModel)]="radioSelected" name="list_name" value="{{item.leagueName}}"/>
+                  {{item.leagueName}}
+                </label>
           </div>
         </div>
         <div class="row">
@@ -28,17 +26,12 @@
               Leaderboards
             </button>
             <div class="dropdown-menu">
-              <a class="dropdown-item" (click)="onClickRace(selectedLeague.leagueName)">Race to 100</a>
-              <a class="dropdown-item" (click)="onClickDelve(selectedLeague.leagueName)">Delve Depths</a>
-              <a class="dropdown-item" (click)="onClickUberlab(selectedLeague.leagueName)">Uber Lab Times</a>
+              <a class="dropdown-item" (click)="onClickRace(radioSelected)">Race to 100</a>
+              <a class="dropdown-item" (click)="onClickDelve(radioSelected)">Delve Depths</a>
+              <a class="dropdown-item" (click)="onClickUberlab(radioSelected)">Uber Lab Times</a>
             </div>
-
           </div>
-
         </div>
-
-
-
       </div>
     </div>
   </div>

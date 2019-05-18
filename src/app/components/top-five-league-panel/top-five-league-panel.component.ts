@@ -12,7 +12,11 @@ import { Router } from '@angular/router';
 export class TopFiveLeaguePanelComponent implements OnInit {
   leagueNames = new Array<LeagueNameModel>();
   subscription: any;
-  selectedLeague: LeagueNameModel;
+  selectedLeague: any;
+  radioSel:LeagueNameModel;
+  radioSelected:string;
+  radioSelectedString:string;
+
 
   constructor(private leaderboardService: LeaderboardService, private formsModule: FormsModule, private router: Router) {
     this.subscription = leaderboardService
@@ -22,8 +26,10 @@ export class TopFiveLeaguePanelComponent implements OnInit {
           return new LeagueNameModel(item.leagueName);
         });
       });
-
-      console.log("leagueNames : " + this.leagueNames);
+    console.log('leagueNames : ' + this.leagueNames);
+    this.selectedLeague = new LeagueNameModel('Synthesis Event');
+    this.radioSelected = 'Synthesis Event';
+    this.getSelecteditem();
   }
 
   onClickRace(league: string) {
@@ -39,6 +45,16 @@ export class TopFiveLeaguePanelComponent implements OnInit {
   onClickUberlab( league: string) {
     this.router.navigate(['/leaderboard-top-5-uberlab/', league]);
     console.log('selectedLeague : '+ league);
+  }
+
+  getSelecteditem(){
+    this.radioSel = this.leagueNames.find(Item => Item.leagueName === this.radioSelected);
+    this.radioSelectedString = JSON.stringify(this.radioSel);
+    this.selectedLeague = this.radioSel;
+  }
+
+  onLeagueChange(entry) {
+    this.getSelecteditem();
   }
 
   ngOnInit() {
