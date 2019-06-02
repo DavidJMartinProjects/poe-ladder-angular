@@ -11,19 +11,6 @@ import { LeaderboardModel } from '../models/LeaderboardModel';
 export class LeaderboardService{
 
   constructor(private http: HttpClient) { }
-import { TableColumnModel } from './../models/TableColumnModel';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { LeagueNameModel } from '../models/LeagueNameModel';
-import { LeaderboardModel } from '../models/LeaderboardModel';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class LeaderboardService{
-
-  constructor(private http: HttpClient) { }
 
   API_HEROKU_URL = 'https://poe-ladder-db.herokuapp.com/';
   API_LOCALHOST_URL = 'http://localhost:8080/';
@@ -79,8 +66,5 @@ export class LeaderboardService{
     console.log("service.getCustomLeagueLeaderboard() url call to : " + url);
     return this.http.get<LeaderboardModel[]>(url);
   }
-
-}
-
 
 }
