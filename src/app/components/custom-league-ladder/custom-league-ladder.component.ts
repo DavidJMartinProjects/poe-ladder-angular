@@ -30,6 +30,7 @@ export class CustomLeagueLadderComponent implements OnDestroy{
   interval:any;
   changeDetectorRef: ChangeDetectorRef;
   count = 1;
+
   now = new Date();
 
   dtOptions: DataTables.Settings = {
@@ -94,7 +95,7 @@ export class CustomLeagueLadderComponent implements OnDestroy{
     .subscribe(response => {
       this.leaderboardModels = response.map(item => {
         return new LeaderboardModel(
-          item.rank+(this.count++),
+          item.rank,
           item.account,
           item.character,
           item.ascendancy,
