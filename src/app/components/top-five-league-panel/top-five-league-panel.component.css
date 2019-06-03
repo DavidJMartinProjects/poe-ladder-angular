@@ -67,11 +67,11 @@ h6 {
 
 .card {
   margin-top: 1em;
+  margin-bottom: 1em;
   width: 100%;
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-
   background-clip: border-box;
   border: 1px solid #1C2F35;
   border-radius: 0.75rem;
