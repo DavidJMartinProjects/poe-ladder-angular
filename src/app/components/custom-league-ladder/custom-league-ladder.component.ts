@@ -84,7 +84,7 @@ export class CustomLeagueLadderComponent implements OnDestroy{
     this.refreshData();
     this.interval = setInterval(() => {
         this.refreshData();
-    }, 10000);
+    }, 300000);
   }
 
   refreshData(){
