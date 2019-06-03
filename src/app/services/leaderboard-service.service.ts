@@ -62,7 +62,7 @@ export class LeaderboardService{
   }
 
   public getCustomLeagueLeaderboard(customLeagueName: string): Observable<LeaderboardModel[]> {
-    const url = this.API + 'ustom-league?leagueName='+customLeagueName;
+    const url = this.API + 'custom-league?leagueName='+customLeagueName;
     console.log("service.getCustomLeagueLeaderboard() url call to : " + url);
     return this.http.get<LeaderboardModel[]>(url);
   }
