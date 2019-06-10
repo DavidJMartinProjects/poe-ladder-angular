@@ -1,10 +1,9 @@
 <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-2">
-      </div>
-      <div class="col">
+
+      <div class="col col-md mx-auto">
             <div *ngIf="displayTable">
-              <div class="card">
+              <div class="card mx-auto">
                 <div class="card-header text-center">
                     <div class="row">
                         <div class="col">
@@ -12,8 +11,8 @@
                         <div class="col-auto">
                             {{delveLeaderboard[0].league}}
                         </div>
-                        <div class="col">
-                            Last Updated : {{this.now.getHours()}}:{{this.now.getMinutes()}}:{{this.now.getSeconds()}}
+                        <div class="col text-right">
+                            Last Updated : {{now | date:'medium'}} &nbsp; &nbsp; &nbsp; &nbsp; 
                         </div>
                     </div>
                 </div>
@@ -38,8 +37,8 @@
                       <tbody>
                         <tr *ngFor="let entry of delveLeaderboard">
                           <td>{{entry.rank}}</td>
-                          <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>&ensp;({{entry.rankDifference}})</td>
-                          <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>&ensp;({{entry.rankDifference}})</td>
+                          <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>  ({{entry.rankDifference}})</td>
+                          <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>  ({{entry.rankDifference}})</td>
                           <td *ngIf="entry.rankDifference == '0'"></td> 
                           <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{entry.account}}</td>
                           <td>{{entry.character}}</td>
@@ -64,7 +63,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-2"></div>
+
     </div>
   </div>
 
