@@ -32,6 +32,7 @@
               <thead>
                 <tr>
                   <th>#</th>
+                  <th></th>
                   <th>Account</th>
                   <th>Character</th>
                   <th></th>
@@ -42,6 +43,7 @@
               <tbody>
                 <tr *ngFor="let entry of softcore">
                   <td>{{ entry.rank }}</td>
+                  <td>({{entry.rankDifference}})</td>
                   <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                   <td>{{ entry.character }}</td>
                   <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
@@ -77,6 +79,7 @@
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th></th>
                     <th>Account</th>
                     <th>Character</th>
                     <th></th>
@@ -87,6 +90,7 @@
                 <tbody>
                   <tr *ngFor="let entry of hardcore">
                     <td>{{ entry.rank }}</td>
+                    <td>({{entry.rankDifference}})</td>
                     <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                     <td>{{ entry.character }}</td>
                     <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
@@ -123,6 +127,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th></th>
                 <th>Account</th>
                 <th>Character</th>
                 <th></th>
@@ -133,6 +138,7 @@
             <tbody>
               <tr *ngFor="let entry of softcoreSsf">
                 <td>{{ entry.rank }}</td>
+                <td>({{entry.rankDifference}})</td>
                 <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                 <td>{{ entry.character }}</td>
                 <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
@@ -167,6 +173,7 @@
             <thead>
               <tr>
                 <th>#</th>
+                <th></th>
                 <th>Account</th>
                 <th>Character</th>
                 <th></th>
@@ -177,6 +184,7 @@
             <tbody>
               <tr *ngFor="let entry of hardcoreSsf">
                 <td>{{ entry.rank }}</td>
+                <td>({{entry.rankDifference}})</td>
                 <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                 <td>{{ entry.character }}</td>
                 <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>

@@ -33,6 +33,7 @@ export class Top100leaderboardComponent implements OnInit {
         this.delveLeaderboard = response.map(item => {
           return new LeaderboardModel(
             item.rank,
+            item.rankDifference,
             item.account,
             item.character,
             item.ascendancy,
@@ -41,7 +42,8 @@ export class Top100leaderboardComponent implements OnInit {
             item.level,
             item.depth,
             item.time,
-            item.experience,
+            item.experience,  
+            item.experienceDifference,          
             item.progress,
             item.online,
             item.dead
