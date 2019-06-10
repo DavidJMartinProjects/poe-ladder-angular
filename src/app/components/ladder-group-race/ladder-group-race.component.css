@@ -94,16 +94,12 @@ margin-right: 12%;
 height: 100%;
 }
 
-
-
 /* Start of DataTable Row Styling */
 table.dataTable thead th, table.dataTable thead td {
 padding: 8px 12px;
 border-bottom: 1px solid white;
 height: 1x!important;
 padding: 4px;
-
-
 }
 
 table.dataTable tbody th, table.dataTable tbody td {
@@ -192,6 +188,24 @@ color: black!important;
   margin:auto;
   width: 37px;
   height: 32px;
+}
+
+.arrow-up {
+	border: solid green;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 4px;
+	transform: rotate(-135deg);
+	-webkit-transform: rotate(-135deg);
+}
+
+.arrow-down {
+	border: solid red;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 4px;
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
 }
 
 
