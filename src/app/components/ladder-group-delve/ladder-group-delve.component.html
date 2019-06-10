@@ -43,8 +43,8 @@
                     <tbody>
                       <tr *ngFor="let entry of softcore">
                         <td>{{ entry.rank }}</td>
-                        <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>&ensp;({{entry.rankDifference}})</td>
-                        <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>&ensp;({{entry.rankDifference}})</td>
+                        <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span></td>
+                        <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span></td>
                         <td *ngIf="entry.rankDifference == '0'"></td> 
                         <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                         <td>{{ entry.character }}</td>
@@ -92,8 +92,8 @@
                       <tbody>
                         <tr *ngFor="let entry of hardcore">
                           <td>{{ entry.rank }}</td>
-                          <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>&ensp;({{entry.rankDifference}})</td>
-                          <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>&ensp;({{entry.rankDifference}})</td>
+                          <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span></td>
+                          <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span></td>
                           <td *ngIf="entry.rankDifference == '0'"></td> 
                           <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                           <td>{{ entry.character }}</td>
@@ -141,9 +141,9 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let entry of softcoreSsf">
-                      <td>{{ entry.rank }}</td>
-                      <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>&ensp;({{entry.rankDifference}})</td>
-                      <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>&ensp;({{entry.rankDifference}})</td>
+                        <td>{{ entry.rank }}</td>
+                        <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span></td>
+                        <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span></td>
                       <td *ngIf="entry.rankDifference == '0'"></td> 
                       <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                       <td>{{ entry.character }}</td>
@@ -192,8 +192,8 @@
                   <tbody>
                     <tr *ngFor="let entry of hardcoreSsf">
                       <td>{{ entry.rank }}</td>
-                      <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>&ensp;({{entry.rankDifference}})</td>
-                      <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>&ensp;({{entry.rankDifference}})</td>
+                      <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span></td>
+                      <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span></td>
                       <td *ngIf="entry.rankDifference == '0'"></td> 
                       <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{ entry.account }}</td>
                       <td>{{ entry.character }}</td>
