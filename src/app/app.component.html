@@ -1,24 +1,17 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>poe-ladder.com</title>
+    <meta name="author" content="poe-ladder.com">
+    <base href="/">
+  </head>
 
-<head>
-  <meta charset="utf-8">
-  <title>poe-ladder.com</title>
-  <meta name="author" content="poe-ladder.com">
-  <base href="/">
-</head>
-
-<!-- <body [style.background-image] = 'url(\'images\poe-ladder-background.jpg\)'> -->
-<body class="image">
-    <!-- <div [ngStyle]="{background: 'url(\'../../images/poe-ladder-background.jpg\)'}"></div> -->
-  <div class="container-fluid">
-    <app-navbar></app-navbar>
-    <!-- <app-top-five-league-panel></app-top-five-league-panel> -->
-  </div>
-
-  <router-outlet></router-outlet>
-</body>
-
-
+  <body class="image">
+    <div class="container-fluid">
+      <app-navbar></app-navbar>
+    </div>
+    <router-outlet></router-outlet>
+  </body>
 </html>
 

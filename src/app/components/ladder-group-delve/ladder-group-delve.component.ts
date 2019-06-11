@@ -1,5 +1,5 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
@@ -14,6 +14,7 @@ declare var $;
 export class LadderGroupDelveComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    clearInterval(this.interval);
   }
   subscription: any;
   league: string;
@@ -27,13 +28,28 @@ export class LadderGroupDelveComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute, private router: Router) {
+  changeDetectorRef: ChangeDetectorRef;
+  interval:any;
+
+  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute, private router: Router, changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnInit() {
+    this.league = this.activatedRoute.snapshot.paramMap.get("leagueName");
+    console.log("Loading Delve ranks for " + this.league + " league.");
+    this.leaderboardService = this.leaderboardService;
+    this.changeDetectorRef = this.changeDetectorRef;
+
+    this.refreshData();
+    this.interval = setInterval(() => {
+        this.refreshData();
+    }, 600000); 
+  }
+
+  refreshData() {
     this.subscription = this.activatedRoute.params.subscribe(params => {
       this.league = params['league']; // (+) converts string 'id' to a number
-      console.log("ngOnInit() league : " + this.league);
+      console.log("Refreshing Delve ranks for " + this.league + " league.");
 
       this.delveLeaderboard = new Array<LeaderboardModel>();
       this.softcore = new Array<LeaderboardModel>();
@@ -74,24 +90,13 @@ export class LadderGroupDelveComponent implements OnInit, OnDestroy {
             this.softcoreSsf.push(this.delveLeaderboard[i]);
           }
         }
-    });
-  });
+      });
+   });
 
   }
   onClick(league: string, leaderboard: string) {
     this.router.navigate(['ladder/top-100/', league, leaderboard]);
     console.log('onClick /top-100/'+ leaderboard +'/'+ league);
   }
-
-  // ngAfterViewInit() {
-  //     $('datatable').DataTable({
-  //     bPaginate: false,
-  //     bLengthChange: true,
-  //     bFilter: false,
-  //     bInfo: false,
-  //     bAutoWidth: false,
-  //     searching: false
-  //   });
-  // }
 
 }

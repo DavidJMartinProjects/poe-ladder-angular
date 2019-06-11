@@ -1,6 +1,6 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { LeaderboardModel } from "../../models/LeaderboardModel";
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { ActivatedRoute, Router} from '@angular/router';
 import { Subject, from } from 'rxjs';
 
@@ -13,9 +13,23 @@ declare var $;
 })
 
 export class LadderGroupRaceComponent implements OnInit, OnDestroy {
+  ngOnInit() {   
+    this.league = this.activatedRoute.snapshot.paramMap.get("leagueName");
+    console.log("Loading Race to 100 ranks for " + this.league + " league.");
+    this.leaderboardService = this.leaderboardService;
+    this.changeDetectorRef = this.changeDetectorRef;
+
+    this.refreshData();
+    this.interval = setInterval(() => {
+        this.refreshData();
+    }, 600000); 
+  }
+
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    clearInterval(this.interval);
   }
+  
   subscription: any;
   league: string;
 
@@ -25,15 +39,30 @@ export class LadderGroupRaceComponent implements OnInit, OnDestroy {
   softcoreSsf = new Array<LeaderboardModel>();
   hardcoreSsf = new Array<LeaderboardModel>();
 
+  changeDetectorRef: ChangeDetectorRef;
+  interval:any;
+
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
-  constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute, private router: Router) {}
+  constructor(
+    private leaderboardService: LeaderboardService, 
+    private activatedRoute: ActivatedRoute, 
+    private router: Router, 
+    changeDetectorRef: ChangeDetectorRef
+  ) {
+    this.league = activatedRoute.snapshot.paramMap.get("leagueName");
+    console.log("leagueName : " + this.league);
+    this.leaderboardService = leaderboardService;
+    this.changeDetectorRef = changeDetectorRef;
 
-  ngOnInit() {
+
+  }
+
+  refreshData() {
     this.subscription = this.activatedRoute.params.subscribe(params => {
       this.league = params['league']; // (+) converts string 'id' to a number
-      console.log("ngOnInit() league : " + this.league);
+      console.log("Refreshing Race to 100 ranks for " + this.league + " league.");
 
       this.raceTo100LeaderboardModel = new Array<LeaderboardModel>();
       this.softcore = new Array<LeaderboardModel>();

@@ -1,5 +1,5 @@
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { Subject } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
@@ -14,6 +14,7 @@ declare var $;
 export class LadderGroupUberlabComponent implements OnInit {
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    clearInterval(this.interval);
   }
   subscription: any;
   league: string;
@@ -27,13 +28,29 @@ export class LadderGroupUberlabComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
 
+  changeDetectorRef: ChangeDetectorRef;
+  interval:any;
+
   constructor(private leaderboardService: LeaderboardService, private activatedRoute: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
+    this.league = this.activatedRoute.snapshot.paramMap.get("leagueName");
+    console.log("Loading UberLab ranks for " + this.league + " league.");
+    this.leaderboardService = this.leaderboardService;
+    this.changeDetectorRef = this.changeDetectorRef;
+
+    this.refreshData();
+    this.interval = setInterval(() => {
+        this.refreshData();
+    }, 600000); 
+    
+  }
+
+  refreshData() {
     this.subscription = this.activatedRoute.params.subscribe(params => {
       this.league = params['league']; // (+) converts string 'id' to a number
-      console.log("ngOnInit() league : " + this.league);
+      console.log("Loading UberLab ranks for " + this.league + " league.");
 
       this.uberlabLeaderboard = new Array<LeaderboardModel>();
       this.softcore = new Array<LeaderboardModel>();
