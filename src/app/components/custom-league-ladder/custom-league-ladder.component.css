@@ -161,3 +161,10 @@ th {
 	transform: rotate(45deg);
 	-webkit-transform: rotate(45deg);
 }
+
+.lastupdated {
+  padding-top: 1em;
+  font-size: .8em;
+}
+
+
