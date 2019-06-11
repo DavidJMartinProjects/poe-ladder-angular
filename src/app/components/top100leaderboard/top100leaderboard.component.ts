@@ -47,7 +47,8 @@ export class Top100leaderboardComponent implements OnInit {
             item.experienceDifference,          
             item.progress,
             item.online,
-            item.dead
+            item.dead,
+            item.timeStamp
           );
         });
         this.laddertype = this.delveLeaderboard[0].leaderboard;
