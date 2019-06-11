@@ -78,7 +78,8 @@ export class CustomLeagueLadderComponent implements OnDestroy{
           item.experienceDifference,          
           item.progress,
           item.online,
-          item.dead
+          item.dead,
+          item.timeStamp
         );
       });
 
@@ -113,7 +114,8 @@ export class CustomLeagueLadderComponent implements OnDestroy{
           item.experienceDifference,          
           item.progress,
           item.online,
-          item.dead
+          item.dead,
+          item.timeStamp
         );
       });
       this.changeDetectorRef.detectChanges();
