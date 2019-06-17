@@ -84,6 +84,14 @@ export class Top100leaderboardComponent implements OnInit {
     return "#90ee90";
   }
 
+  isDead(isDead) {
+    if(isDead != null && isDead != "" && isDead!="undefined")  {
+      if(isDead.includes("true")) {
+        return true;
+      }
+    }
+  }
+
   ngOnInit() {
   }
 

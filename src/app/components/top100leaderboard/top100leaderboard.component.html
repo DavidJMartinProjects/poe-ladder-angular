@@ -42,7 +42,7 @@
                           <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>  ({{entry.rankDifference}})</td>
                           <td *ngIf="entry.rankDifference == '0'"></td> 
                           <td><img class="online-icon" src="assets/images/{{entry.online}}.png">&nbsp; {{entry.account}}</td>
-                          <td>{{entry.character}}</td>
+                          <td>{{entry.character}} <i *ngIf="isDead(entry.dead)" id="isDead">(dead)</i></td>
                           <td><img class="logo" src="assets/ascendancy_images/{{entry.ascendancy}}.jpg"></td>
                           <td>{{entry.ascendancy}}</td>
                           <td *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'">&nbsp;{{entry.level}}</td>

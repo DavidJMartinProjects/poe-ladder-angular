@@ -171,3 +171,7 @@ th {
 	-webkit-transform: rotate(45deg);
 }
 
+#isDead {
+  color: red;
+}
+
