@@ -92,6 +92,16 @@ export class Top100leaderboardComponent implements OnInit {
     }
   }
 
+  deadCharRowStyling(isDead) {
+    console.log("deadCharRowStyling called with : " + isDead);
+    if(isDead != null && isDead != "" && isDead!="undefined")  {
+      if(isDead.includes("true")) {
+        console.log("deadCharRowStyling is true.");
+        return "deadCharRow";
+      }
+    }    
+  }
+
   ngOnInit() {
   }
 

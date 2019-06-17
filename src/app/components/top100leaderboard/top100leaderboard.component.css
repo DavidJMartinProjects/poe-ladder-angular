@@ -175,3 +175,11 @@ th {
   color: red;
 }
 
+.deadCharRow {
+  background-color: red!important;
+  color: red!important;
+  border: 1px while solid !important;;
+  font-style: italic;  
+  
+}
+
