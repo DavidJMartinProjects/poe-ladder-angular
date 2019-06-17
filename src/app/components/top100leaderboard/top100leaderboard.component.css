@@ -97,13 +97,7 @@ table.dataTable tbody th, table.dataTable tbody td {
   border: #1C2F35 1px solid;
 }
 
-.table-striped tbody tr:nth-of-type(odd) {
-	background-color: hsla(0, 0%, 100%, 0);
-}
 
-.table-striped tbody tr:nth-of-type(even) {
-	background-color: hsla(0, 0%, 100%, .03);
-}
 
 .table-bordered {
   border: 1px solid #111!important;
@@ -175,11 +169,8 @@ th {
   color: red;
 }
 
-.deadCharRow {
-  background-color: red!important;
-  color: red!important;
-  border: 1px while solid !important;;
-  font-style: italic;  
-  
+.deadCharRow td {  
+  color: #A9A9A7 !important;
+  font-style: italic;    
 }
 

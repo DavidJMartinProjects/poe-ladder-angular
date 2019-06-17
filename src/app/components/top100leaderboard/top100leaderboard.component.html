@@ -38,8 +38,8 @@
                         </tr>
                       </thead>
                       <tbody>   
-                        <ng-container *ngFor="let entry of delveLeaderboard">                      
-                          <tr>
+                        <ng-container >                      
+                          <tr *ngFor="let entry of delveLeaderboard" [ngClass]="deadCharRowStyling(entry.dead)">
                             <td>{{entry.rank}}</td>
                             <td *ngIf="entry.rankDifference.includes('-')"><span class='arrow-down'></span>  ({{entry.rankDifference}})</td>
                             <td *ngIf="entry.rankDifference.includes('+')"><span class='arrow-up'></span>  ({{entry.rankDifference}})</td>
