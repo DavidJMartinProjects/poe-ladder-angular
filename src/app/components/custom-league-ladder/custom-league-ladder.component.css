@@ -51,16 +51,12 @@ margin-right: 12%;
 height: 100%;
 }
 
-
-
 /* Start of DataTable Row Styling */
 table.dataTable thead th, table.dataTable thead td {
 	padding: 8px 12px;
   border-bottom: 1px solid white;
   height: 1x!important;
   padding: 4px;
-
-
 }
 
 table.dataTable tbody th, table.dataTable tbody td {
@@ -81,9 +77,7 @@ table.dataTable tbody th, table.dataTable tbody td {
 }
 
 .dataTables_wrapper div.dataTables_filter label {
-
   color: white!important;
-
 }
 
 .progress {
@@ -105,7 +99,6 @@ table.dataTable tbody th, table.dataTable tbody td {
 
 .table-bordered {
   border: 1px solid #111!important;
-
 }
 
 tr {
@@ -166,5 +159,3 @@ th {
   padding-top: 1em;
   font-size: .8em;
 }
-
-

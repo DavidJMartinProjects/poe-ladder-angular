@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 import { LeaderboardService } from "./../../services/leaderboard-service.service";
 import { LeaderboardModel } from 'src/app/models/LeaderboardModel';
+import { removeDebugNodeFromIndex } from '@angular/core/src/debug/debug_node';
 
 @Component({
   selector: "app-top100leaderboard",
@@ -74,6 +75,16 @@ export class Top100leaderboardComponent implements OnInit {
 
   }
 
+  getXpphFontColor(experienceDifference) {   
+    if(experienceDifference != null && experienceDifference != "" && experienceDifference!="undefined")  {
+      if(experienceDifference.includes("-")) {
+        return "red";
+      } 
+    }
+    return "green";
+  }
+
   ngOnInit() {
   }
+
 }

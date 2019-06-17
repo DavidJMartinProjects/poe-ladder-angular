@@ -29,6 +29,7 @@
                           <th>&nbsp;Ascendancy</th>
                           <th *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'">&nbsp;Level  </th>
                           <th *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'">&nbsp;Level Progress </th>
+                          <th *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'">&nbsp;XP/PH </th>
                           <th *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'">&nbsp;Experience </th>
                           <th *ngIf="delveLeaderboard[0].leaderboard === 'Top Delve Depths'">&nbsp;Depth  </th>
                           <th *ngIf="delveLeaderboard[0].leaderboard === 'Top UberLab Times'">&nbsp;Time  </th>
@@ -50,6 +51,7 @@
                               <div class="progress-bar bg-dark" role="progressbar" [ngStyle]="{ 'width': entry.progress }"> </div>
                             </div>
                           </td>
+                          <td *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'" [ngStyle]="{'color': getXpphFontColor(entry.experienceDifference)}">&nbsp;{{entry.experienceDifference}}</td>
                           <td *ngIf="delveLeaderboard[0].leaderboard === 'Top Race to 100'">&nbsp;{{entry.experience}}</td>
                           <td *ngIf="delveLeaderboard[0].leaderboard === 'Top Delve Depths'">&nbsp;{{entry.depth}}</td>
                           <td *ngIf="delveLeaderboard[0].leaderboard === 'Top UberLab Times'">&nbsp;{{entry.timeFormatted}}</td>
