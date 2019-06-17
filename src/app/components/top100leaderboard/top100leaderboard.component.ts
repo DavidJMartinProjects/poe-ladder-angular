@@ -81,7 +81,7 @@ export class Top100leaderboardComponent implements OnInit {
         return "red";
       } 
     }
-    return "green";
+    return "#90ee90";
   }
 
   ngOnInit() {
